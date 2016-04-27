@@ -1,0 +1,9 @@
+line {
+  stroke: black;
+}
+
+rect {
+  fill: #ffffff;
+  fill-opacity: 0.8;
+  stroke: black;
+}

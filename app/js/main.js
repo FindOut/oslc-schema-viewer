@@ -17,6 +17,8 @@ function fetchXml(url) {
 var rdfNs='http://www.w3.org/1999/02/22-rdf-syntax-ns#',
 oslcNs='http://open-services.net/ns/core#';
 
+var propMap = new Map();
+
 fetchXml('http://localhost:3011/rio-cm/catalog').then(function(catalog) {
   console.log('catalog', catalog);
   var serviceProviderUrl = catalog.getElementsByTagNameNS(oslcNs, 'serviceProvider')[0]
@@ -31,9 +33,20 @@ fetchXml('http://localhost:3011/rio-cm/catalog').then(function(catalog) {
   return fetchXml(resourceShapeUrl);
 }).then(function(resourceShape) {
   console.log('resourceShape', resourceShape);
-  _.foreach(resourceShape.getElementsByTagNameNS(oslcNs, 'Property'), function(Property) {
-    console.log(Property);
+  _.forEach(resourceShape.getElementsByTagNameNS(oslcNs, 'Property'), function(property) {
+    var name, attrMap = new Map();
+    _.forEach(property.children, function(child) {
+      if (child.localName == 'name') {
+        name = child.childNodes[0].wholeText;
+      } else if(child.getAttributeNS(rdfNs, 'resource')) {
+        attrMap.set(child.localName, child.getAttributeNS(rdfNs, 'resource'));
+      } else if(child.getAttributeNS(rdfNs, 'datatype')) {
+        attrMap.set(child.localName, child.childNodes[0].wholeText);
+      }
+    });
+    propMap.set(name, attrMap);
   });
+  console.log('propMap', propMap);
 },
 function(error) {
   console.error(error);

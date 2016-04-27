@@ -20,7 +20,7 @@ app.use('/rio-cm', function(request, response, next) {
     if (error || resp.statusCode != 200) {
       response.status(500).send(error);
     } else {
-      response.header('ETag', 'asd');
+      response.header('ETag', 'asdqwe');
       response.header('Content-Type', 'application/xml');
       response.send(body.replace(/8080/g, '3011'));
     }

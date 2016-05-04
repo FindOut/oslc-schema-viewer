@@ -53,6 +53,7 @@ function fetchIndexedJsonLd(url) {
 var parser = new RdfXmlParser();
 var catalogUrl = 'http://localhost:3011/rio-cm/catalog';
 var serviceProviderUrl, resourceShapeUrl;
+var resultMap = {};
 fetchIndexedJsonLd(catalogUrl).then(function(indexedCatalog) {
   console.log(catalogUrl, indexedCatalog);
   serviceProviderUrl = indexedCatalog[catalogUrl]['http://open-services.net/ns/core#serviceProvider'][0]['@id'];
@@ -65,7 +66,10 @@ fetchIndexedJsonLd(catalogUrl).then(function(indexedCatalog) {
   return fetchIndexedJsonLd(resourceShapeUrl);
 }).then(function(indexedResourceShape) {
   console.log(resourceShapeUrl, indexedResourceShape);
-  return _.map(indexedResourceShape[resourceShapeUrl]['http://open-services.net/ns/core#property'], function(propertyId) {
+  var shape = _.find(indexedResourceShape, (value, key)=>value['@type']=='http://open-services.net/ns/core#Shape');
+  var resourceType = shape['http://open-services.net/ns/core#describes'][0]['@id'];
+  console.log('resourceType', resourceType);
+  resultMap[resourceType] = _.map(indexedResourceShape[resourceShapeUrl]['http://open-services.net/ns/core#property'], function(propertyId) {
     var property = indexedResourceShape[propertyId['@id']];
     function getPropertyProperty(id, selector) {
       var prop = property['http://open-services.net/ns/core#' + id];
@@ -85,23 +89,25 @@ fetchIndexedJsonLd(catalogUrl).then(function(indexedCatalog) {
       valueType: getPropertyProperty('valueType', '@id')
     };
   });
-}).then(function(props) {
-  console.log(props);
-
-  var table = d3.select('#graph').selectAll('table')
-    .data(['dummy']);
-  var tableEnter = table.enter().append('table');
-  tableEnter.append('tr').attr('class', 'thead');
-  var keys = ['name', 'valueType', 'occurs', 'readOnly'];
-  table.select('tr').selectAll('td')
-    .data(keys).enter().append('td').attr('class', 'thead').text(d=>d);
-  table.selectAll('.proprow')
-    .data(props, d=>d.id)
-    .enter().append('tr')
-    .attr('class', '.proprow')
-    .selectAll('td')
-    .data(d=>_.map(keys, key=>d[key])).enter().append('td').text(d=>d);
-
+  return resultMap;
+}).then(function(resultMap) {
+  console.log(resultMap);
+  _.forEach(resultMap, function(props, id) {
+    d3.select('#graph').append('h3').text(id)
+    var table = d3.select('#graph').selectAll('table')
+      .data(['dummy']);
+    var tableEnter = table.enter().append('table');
+    tableEnter.append('tr').attr('class', 'thead');
+    var keys = ['name', 'valueType', 'occurs', 'readOnly'];
+    table.select('tr').selectAll('td')
+      .data(keys).enter().append('td').attr('class', 'thead').text(d=>d);
+    table.selectAll('.proprow')
+      .data(props, d=>d.id)
+      .enter().append('tr')
+      .attr('class', '.proprow')
+      .selectAll('td')
+      .data(d=>_.map(keys, key=>d[key])).enter().append('td').text(d=>d);
+  });
 }).catch(function (error) {
   console.error(error);
 });

@@ -11,6 +11,7 @@ var app = express();
 app.use(webpackDevMiddleware(webpack(config), {}));
 
 app.use('/rio-cm', function(request, response, next) {
+  console.log('url', request.originalUrl);
   http({
     url: 'http://localhost:8080' + request.originalUrl,
     headers: {
@@ -22,7 +23,10 @@ app.use('/rio-cm', function(request, response, next) {
     } else {
       response.header('ETag', 'asdqwe');
       response.header('Content-Type', 'application/xml');
-      response.send(body.replace(/8080/g, '3011'));
+      response.header('Access-Control-Allow-Origin', '*');
+      var result = body.replace(/8080/g, '3011');
+      console.log(result);
+      response.send(result);
     }
   });
 });

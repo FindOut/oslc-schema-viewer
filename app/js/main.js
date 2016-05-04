@@ -1,6 +1,8 @@
 var d3 = require('d3');
 var _ = require('lodash');
 var Promise = require('promise');
+var jsonld = require('jsonld');
+var RdfXmlParser = require('rdf-parser-rdfxml');
 
 function fetchXml(url) {
   return new Promise(function(fulfill, reject) {
@@ -14,40 +16,92 @@ function fetchXml(url) {
   });
 }
 
-var rdfNs='http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-oslcNs='http://open-services.net/ns/core#';
+function singleToString(s) {
+  if (s.interfaceName == 'NamedNode') {
+    return '<' + s.nominalValue + '>';
+  } else if (s.interfaceName == 'BlankNode') {
+    return '_:' + s.nominalValue;
+  } else if (s.interfaceName == 'Literal') {
+    return JSON.stringify(s.nominalValue, null, '');
+  } else {
+    throw 'unsupported rdf type: ' + s;
+  }
+}
 
-var propMap = new Map();
+function tripleToString(triple) {
+  return singleToString(triple.subject) + ' ' + singleToString(triple.predicate) + ' ' + singleToString(triple.object) + '.';
+}
 
-fetchXml('http://localhost:3011/rio-cm/catalog').then(function(catalog) {
-  console.log('catalog', catalog);
-  var serviceProviderUrl = catalog.getElementsByTagNameNS(oslcNs, 'serviceProvider')[0]
-    .getAttributeNS(rdfNs, 'resource');
-  console.log('serviceProviderUrl', serviceProviderUrl);
-  return fetchXml(serviceProviderUrl);
-}).then(function(serviceProvider) {
-  console.log('serviceProvider', serviceProvider);
-  var resourceShapeUrl = serviceProvider.getElementsByTagNameNS(oslcNs, 'resourceShape')[0]
-    .getAttributeNS(rdfNs, 'resource');
-  console.log('resourceShapeUrl', resourceShapeUrl);
-  return fetchXml(resourceShapeUrl);
-}).then(function(resourceShape) {
-  console.log('resourceShape', resourceShape);
-  _.forEach(resourceShape.getElementsByTagNameNS(oslcNs, 'Property'), function(property) {
-    var name, attrMap = new Map();
-    _.forEach(property.children, function(child) {
-      if (child.localName == 'name') {
-        name = child.childNodes[0].wholeText;
-      } else if(child.getAttributeNS(rdfNs, 'resource')) {
-        attrMap.set(child.localName, child.getAttributeNS(rdfNs, 'resource'));
-      } else if(child.getAttributeNS(rdfNs, 'datatype')) {
-        attrMap.set(child.localName, child.childNodes[0].wholeText);
-      }
-    });
-    propMap.set(name, attrMap);
+function graphToString(graph) {
+  var graphString = '';
+  for (var triple of graph._graph) {
+    graphString += tripleToString(triple) + '\n';
+  }
+  return graphString;
+}
+
+function fetchIndexedJsonLd(url) {
+  return fetchXml(url).then(function(urlData) {
+    return parser.parse(urlData);
+  }).then(function (graph) {
+    return jsonld.promises.fromRDF(graphToString(graph), {format: 'application/nquads'});
+  }).then(function (urlDataJsonLd) {
+    return _.keyBy(urlDataJsonLd, '@id');
   });
-  console.log('propMap', propMap);
-},
-function(error) {
+}
+
+var parser = new RdfXmlParser();
+var catalogUrl = 'http://localhost:3011/rio-cm/catalog';
+var serviceProviderUrl, resourceShapeUrl;
+fetchIndexedJsonLd(catalogUrl).then(function(indexedCatalog) {
+  console.log(catalogUrl, indexedCatalog);
+  serviceProviderUrl = indexedCatalog[catalogUrl]['http://open-services.net/ns/core#serviceProvider'][0]['@id'];
+  return fetchIndexedJsonLd(serviceProviderUrl);
+}).then(function(indexedServiceProvider) {
+  console.log(serviceProviderUrl, indexedServiceProvider);
+  var serviceId = indexedServiceProvider[serviceProviderUrl]['http://open-services.net/ns/core#service'][0]['@id'];
+  var creationFactoryId = indexedServiceProvider[serviceId]['http://open-services.net/ns/core#creationFactory'][0]['@id'];
+  resourceShapeUrl = indexedServiceProvider[creationFactoryId]['http://open-services.net/ns/core#resourceShape'][0]['@id'];
+  return fetchIndexedJsonLd(resourceShapeUrl);
+}).then(function(indexedResourceShape) {
+  console.log(resourceShapeUrl, indexedResourceShape);
+  return _.map(indexedResourceShape[resourceShapeUrl]['http://open-services.net/ns/core#property'], function(propertyId) {
+    var property = indexedResourceShape[propertyId['@id']];
+    function getPropertyProperty(id, selector) {
+      var prop = property['http://open-services.net/ns/core#' + id];
+      return prop && prop[0][selector]
+        .replace('http://open-services.net/ns/core#', 'oslc:')
+        .replace('http://open-services.net/ns/cm#', 'cm:')
+        .replace('http://purl.org/dc/terms/', 'purl:')
+        .replace('http://www.w3.org/2001/XMLSchema#', 'xsd:')
+        .replace('http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'rdf:')
+    }
+    return {
+      id: propertyId['@id'],
+      name: getPropertyProperty('name', '@value'),
+      propertyDefinition: getPropertyProperty('propertyDefinition', '@id'),
+      occurs: getPropertyProperty('occurs', '@id'),
+      readOnly: getPropertyProperty('readOnly', '@value'),
+      valueType: getPropertyProperty('valueType', '@id')
+    };
+  });
+}).then(function(props) {
+  console.log(props);
+
+  var table = d3.select('#graph').selectAll('table')
+    .data(['dummy']);
+  var tableEnter = table.enter().append('table');
+  tableEnter.append('tr').attr('class', 'thead');
+  var keys = ['name', 'valueType', 'occurs', 'readOnly'];
+  table.select('tr').selectAll('td')
+    .data(keys).enter().append('td').attr('class', 'thead').text(d=>d);
+  table.selectAll('.proprow')
+    .data(props, d=>d.id)
+    .enter().append('tr')
+    .attr('class', '.proprow')
+    .selectAll('td')
+    .data(d=>_.map(keys, key=>d[key])).enter().append('td').text(d=>d);
+
+}).catch(function (error) {
   console.error(error);
-})
+});

@@ -7,3 +7,11 @@ rect {
   fill-opacity: 0.8;
   stroke: black;
 }
+
+td.thead {
+  background-color: #ddd;
+}
+
+td {
+  background-color: #f8f8f8;
+}

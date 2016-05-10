@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -L -H 'Accept: application/rdf+xml' -u 'dag.rende@find-out.se:98XV\Qn$IHNk?Lgd' "$2" | tee ${1}-${2##*/}

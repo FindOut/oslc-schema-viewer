@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:oslc="http://open-services.net/ns/core#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://10.238.2.156:8080/oslc4jsimulink/resourceShapes/line">
+    <dcterms:title rdf:parseType="Literal">Line Resource Shape</dcterms:title>
+    <oslc:describes rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:property rdf:nodeID="A0"/>
+    <oslc:property rdf:nodeID="A1"/>
+    <oslc:property rdf:nodeID="A2"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ResourceShape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A0">
+    <oslc:representation rdf:resource="http://open-services.net/ns/core#Reference"/>
+    <oslc:propertyDefinition rdf:resource="http://open-services.net/ns/core#serviceProvider"/>
+    <oslc:range rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <dcterms:description rdf:parseType="Literal">The scope of a resource is a URI for the resource's OSLC Service Provider.</dcterms:description>
+    <dcterms:title rdf:parseType="Literal">Service Provider</dcterms:title>
+    <oslc:valueType rdf:resource="http://open-services.net/ns/core#Resource"/>
+    <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+    <oslc:name>serviceProvider</oslc:name>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <oslc:representation rdf:resource="http://open-services.net/ns/core#Reference"/>
+    <oslc:propertyDefinition rdf:resource="http://mathworks.com/simulink/rdf#Line/targetPort"/>
+    <dcterms:description rdf:parseType="Literal">Description of Line::targetPort TBD</dcterms:description>
+    <dcterms:title rdf:parseType="Literal">targetPort</dcterms:title>
+    <oslc:valueType rdf:resource="http://open-services.net/ns/core#Resource"/>
+    <oslc:occurs rdf:resource="http://open-services.net/ns/core#One-or-many"/>
+    <oslc:readOnly rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</oslc:readOnly>
+    <oslc:name>targetPort</oslc:name>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <oslc:representation rdf:resource="http://open-services.net/ns/core#Reference"/>
+    <oslc:propertyDefinition rdf:resource="http://mathworks.com/simulink/rdf#Line/sourcePort"/>
+    <oslc:range rdf:resource="http://mathworks.com/simulink/rdf#Port"/>
+    <dcterms:description rdf:parseType="Literal">Description of Line::sourcePort TBD</dcterms:description>
+    <dcterms:title rdf:parseType="Literal">sourcePort</dcterms:title>
+    <oslc:valueType rdf:resource="http://open-services.net/ns/core#Resource"/>
+    <oslc:occurs rdf:resource="http://open-services.net/ns/core#Zero-or-one"/>
+    <oslc:name>sourcePort</oslc:name>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Property"/>
+  </rdf:Description>
+</rdf:RDF>

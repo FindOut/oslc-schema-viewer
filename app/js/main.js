@@ -6,7 +6,7 @@ var RdfXmlParser = require('rdf-parser-rdfxml');
 
 function fetchXml(url) {
   return new Promise(function(fulfill, reject) {
-    d3.xml(url, function(error, document) {
+    d3.xml('/proxy?url=' + encodeURIComponent(url), function(error, document) {
       if (error) {
         reject(error);
       } else {
@@ -51,12 +51,13 @@ function fetchIndexedJsonLd(url) {
 }
 
 var parser = new RdfXmlParser();
-var catalogUrl = 'http://localhost:3011/rio-cm/catalog';
+var catalogUrl = 'https://vservices.offis.de/rtp/bugzilla/v1.0/services/catalog/singleton';
 var serviceProviderUrl, resourceShapeUrl;
 var resultMap = {};
 fetchIndexedJsonLd(catalogUrl).then(function(indexedCatalog) {
   console.log(catalogUrl, indexedCatalog);
   serviceProviderUrl = indexedCatalog[catalogUrl]['http://open-services.net/ns/core#serviceProvider'][0]['@id'];
+  console.log('serviceProviderUrl', serviceProviderUrl);
   return fetchIndexedJsonLd(serviceProviderUrl);
 }).then(function(indexedServiceProvider) {
   console.log(serviceProviderUrl, indexedServiceProvider);

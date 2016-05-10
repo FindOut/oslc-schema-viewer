@@ -1,0 +1,2049 @@
+HTTP/1.1 302 Found
+Date: Tue, 10 May 2016 10:07:17 GMT
+Server: Jetty(9.3.8.v20160314)
+Location: https://vservices.offis.de/rtp/simulink/v1.0/services/catalog/singleton
+Content-Length: 0
+Content-Type: text/plain
+
+HTTP/1.1 200 OK
+Date: Tue, 10 May 2016 10:07:18 GMT
+Server: Jetty(9.3.8.v20160314)
+OSLC-Core-Version: 2.0
+Content-Type: application/rdf+xml
+Transfer-Encoding: chunked
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:oslc="http://open-services.net/ns/core#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:nodeID="A0">
+    <oslc:queryCapability rdf:nodeID="A1"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <oslc:queryCapability rdf:nodeID="A5"/>
+    <oslc:creationFactory rdf:nodeID="A6"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A7">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A11">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model4/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A12">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/TwoDOFRobotDynCon/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A14">
+    <oslc:queryCapability rdf:nodeID="A15"/>
+    <oslc:creationFactory rdf:nodeID="A16"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A17">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model15/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A19">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <oslc:queryCapability rdf:nodeID="A21"/>
+    <oslc:creationFactory rdf:nodeID="A22"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model4/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A24">
+    <oslc:queryCapability rdf:nodeID="A25"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A26">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model15/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A27">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A28">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A29">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model11">
+    <oslc:service rdf:nodeID="A30"/>
+    <oslc:service rdf:nodeID="A14"/>
+    <oslc:prefixDefinition rdf:nodeID="A31"/>
+    <oslc:service rdf:nodeID="A24"/>
+    <oslc:prefixDefinition rdf:nodeID="A32"/>
+    <dcterms:identifier>model11</dcterms:identifier>
+    <oslc:prefixDefinition rdf:nodeID="A33"/>
+    <dcterms:title rdf:parseType="Literal">model11</dcterms:title>
+    <oslc:service rdf:nodeID="A34"/>
+    <oslc:prefixDefinition rdf:nodeID="A35"/>
+    <oslc:service rdf:nodeID="A36"/>
+    <oslc:service rdf:nodeID="A37"/>
+    <oslc:prefixDefinition rdf:nodeID="A38"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <oslc:prefixDefinition rdf:nodeID="A39"/>
+    <oslc:prefixDefinition rdf:nodeID="A40"/>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: model11</dcterms:description>
+    <oslc:prefixDefinition rdf:nodeID="A41"/>
+    <oslc:prefixDefinition rdf:nodeID="A42"/>
+    <dcterms:publisher rdf:nodeID="A43"/>
+    <oslc:prefixDefinition rdf:nodeID="A44"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.621Z</dcterms:created>
+    <oslc:prefixDefinition rdf:nodeID="A45"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A46">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model4/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A47">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A48">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A49">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A50">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A51">
+    <oslc:queryCapability rdf:nodeID="A52"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A53">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A54">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology</dcterms:title>
+    <oslc:icon rdf:resource="http://open-services.net/css/images/logo-forflip.png"/>
+    <dcterms:identifier>edu.gatech.mbsec.research.oslc</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT4/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A55">
+    <oslc:queryCapability rdf:nodeID="A56"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A57">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A58">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A59">
+    <oslc:queryCapability rdf:nodeID="A60"/>
+    <oslc:creationFactory rdf:nodeID="A61"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A62">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A63">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model15/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A64">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A65">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A66">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT4/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A67">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A68">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A69">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A70">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A52">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A21">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT4/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A71">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A72">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A73">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model11AfterRT4">
+    <oslc:prefixDefinition rdf:nodeID="A74"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.606Z</dcterms:created>
+    <dcterms:title rdf:parseType="Literal">model11AfterRT4</dcterms:title>
+    <oslc:prefixDefinition rdf:nodeID="A75"/>
+    <oslc:prefixDefinition rdf:nodeID="A76"/>
+    <oslc:prefixDefinition rdf:nodeID="A77"/>
+    <oslc:prefixDefinition rdf:nodeID="A64"/>
+    <dcterms:identifier>model11AfterRT4</dcterms:identifier>
+    <oslc:prefixDefinition rdf:nodeID="A78"/>
+    <oslc:service rdf:nodeID="A79"/>
+    <oslc:service rdf:nodeID="A80"/>
+    <oslc:service rdf:nodeID="A20"/>
+    <oslc:prefixDefinition rdf:nodeID="A81"/>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <oslc:prefixDefinition rdf:nodeID="A82"/>
+    <oslc:prefixDefinition rdf:nodeID="A83"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <dcterms:publisher rdf:nodeID="A84"/>
+    <oslc:prefixDefinition rdf:nodeID="A29"/>
+    <oslc:service rdf:nodeID="A85"/>
+    <oslc:prefixDefinition rdf:nodeID="A10"/>
+    <oslc:service rdf:nodeID="A86"/>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: model11AfterRT4</dcterms:description>
+    <oslc:service rdf:nodeID="A87"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A88">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A61">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A75">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A89">
+    <oslc:queryCapability rdf:nodeID="A90"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A91">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A79">
+    <oslc:queryCapability rdf:nodeID="A92"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A93">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A94">
+    <oslc:queryCapability rdf:nodeID="A95"/>
+    <oslc:creationFactory rdf:nodeID="A96"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A87">
+    <oslc:queryCapability rdf:nodeID="A97"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A98">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A99">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/model">
+    <oslc:queryCapability rdf:nodeID="A100"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A101">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A102">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model1/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A103">
+    <oslc:queryCapability rdf:nodeID="A104"/>
+    <oslc:creationFactory rdf:nodeID="A105"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A84">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A106">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A107">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A100">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A108">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A109">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/TwoDOFRobotDynCon/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A82">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A110">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model3/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A92">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT4/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A90">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model2/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A111">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A112">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A96">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model15/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A97">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT4/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A113">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A114">
+    <oslc:queryCapability rdf:nodeID="A115"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A116">
+    <oslc:queryCapability rdf:nodeID="A117"/>
+    <oslc:creationFactory rdf:nodeID="A118"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/parameters">
+    <oslc:queryCapability rdf:nodeID="A26"/>
+    <oslc:creationFactory rdf:nodeID="A3"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/sldemo_househeat">
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <oslc:prefixDefinition rdf:nodeID="A47"/>
+    <oslc:service rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/inputports"/>
+    <oslc:prefixDefinition rdf:nodeID="A12"/>
+    <oslc:service rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/blocks"/>
+    <dcterms:title rdf:parseType="Literal">sldemo_househeat</dcterms:title>
+    <oslc:prefixDefinition rdf:nodeID="A119"/>
+    <oslc:prefixDefinition rdf:nodeID="A120"/>
+    <oslc:prefixDefinition rdf:nodeID="A98"/>
+    <oslc:prefixDefinition rdf:nodeID="A121"/>
+    <oslc:prefixDefinition rdf:nodeID="A67"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.59Z</dcterms:created>
+    <oslc:prefixDefinition rdf:nodeID="A122"/>
+    <dcterms:identifier>sldemo_househeat</dcterms:identifier>
+    <oslc:service rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/outputports"/>
+    <oslc:prefixDefinition rdf:nodeID="A123"/>
+    <oslc:prefixDefinition rdf:nodeID="A124"/>
+    <oslc:prefixDefinition rdf:nodeID="A125"/>
+    <oslc:service rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/model"/>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: sldemo_househeat</dcterms:description>
+    <oslc:service rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/lines"/>
+    <oslc:service rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/parameters"/>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <dcterms:publisher rdf:nodeID="A112"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A105">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A78">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A126">
+    <oslc:queryCapability rdf:nodeID="A127"/>
+    <oslc:creationFactory rdf:nodeID="A128"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A129">
+    <oslc:queryCapability rdf:nodeID="A130"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A131">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A132">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A86">
+    <oslc:queryCapability rdf:nodeID="A66"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A133">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/lines">
+    <oslc:queryCapability rdf:nodeID="A93"/>
+    <oslc:creationFactory rdf:nodeID="A63"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A134">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/TwoDOFRobotDynCon/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model15">
+    <oslc:prefixDefinition rdf:nodeID="A135"/>
+    <oslc:prefixDefinition rdf:nodeID="A27"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.606Z</dcterms:created>
+    <oslc:prefixDefinition rdf:nodeID="A72"/>
+    <oslc:prefixDefinition rdf:nodeID="A136"/>
+    <oslc:prefixDefinition rdf:nodeID="A137"/>
+    <oslc:prefixDefinition rdf:nodeID="A138"/>
+    <oslc:service rdf:nodeID="A139"/>
+    <oslc:prefixDefinition rdf:nodeID="A65"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <oslc:prefixDefinition rdf:nodeID="A7"/>
+    <oslc:service rdf:nodeID="A4"/>
+    <dcterms:identifier>model15</dcterms:identifier>
+    <oslc:prefixDefinition rdf:nodeID="A107"/>
+    <oslc:service rdf:nodeID="A140"/>
+    <dcterms:publisher rdf:nodeID="A53"/>
+    <oslc:prefixDefinition rdf:nodeID="A141"/>
+    <oslc:service rdf:nodeID="A129"/>
+    <oslc:service rdf:nodeID="A142"/>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: model15</dcterms:description>
+    <oslc:prefixDefinition rdf:nodeID="A131"/>
+    <oslc:service rdf:nodeID="A94"/>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <dcterms:title rdf:parseType="Literal">model15</dcterms:title>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A81">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A85">
+    <oslc:queryCapability rdf:nodeID="A143"/>
+    <oslc:creationFactory rdf:nodeID="A144"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A145">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model3/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A146">
+    <oslc:queryCapability rdf:nodeID="A147"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A148">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A95">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model15/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A149">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A150">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A115">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/TwoDOFRobotDynCon/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A118">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model1/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A42">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A77">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A128">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model2/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A130">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model15/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A136">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A139">
+    <oslc:queryCapability rdf:nodeID="A17"/>
+    <oslc:creationFactory rdf:nodeID="A151"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A152">
+    <oslc:queryCapability rdf:nodeID="A153"/>
+    <oslc:creationFactory rdf:nodeID="A154"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A155">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A76">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A144">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT4/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A156">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A157">
+    <oslc:queryCapability rdf:nodeID="A158"/>
+    <oslc:creationFactory rdf:nodeID="A159"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A147">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model2/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A160">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A161">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A162">
+    <oslc:queryCapability rdf:nodeID="A163"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A117">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model1/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A35">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A164">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A127">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model2/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A140">
+    <oslc:queryCapability rdf:nodeID="A165"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A166">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A151">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model15/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A154">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/TwoDOFRobotDynCon/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A167">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A143">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT4/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A168">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A159">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model3/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A169">
+    <oslc:queryCapability rdf:nodeID="A170"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A163">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/TwoDOFRobotDynCon/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A165">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model15/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A171">
+    <oslc:queryCapability rdf:nodeID="A172"/>
+    <oslc:creationFactory rdf:nodeID="A173"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A41">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A25">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A174">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A175">
+    <oslc:queryCapability rdf:nodeID="A176"/>
+    <oslc:creationFactory rdf:nodeID="A177"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A178">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A153">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/TwoDOFRobotDynCon/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A170">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model2/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A179">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A180">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A181">
+    <oslc:queryCapability rdf:nodeID="A182"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A183">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A158">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model3/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A177">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model2/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A173">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model1/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A31">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A37">
+    <oslc:queryCapability rdf:nodeID="A184"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model3">
+    <oslc:prefixDefinition rdf:nodeID="A58"/>
+    <oslc:service rdf:nodeID="A185"/>
+    <oslc:prefixDefinition rdf:nodeID="A186"/>
+    <oslc:service rdf:nodeID="A187"/>
+    <oslc:prefixDefinition rdf:nodeID="A188"/>
+    <oslc:service rdf:nodeID="A189"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <oslc:prefixDefinition rdf:nodeID="A164"/>
+    <oslc:prefixDefinition rdf:nodeID="A190"/>
+    <oslc:prefixDefinition rdf:nodeID="A191"/>
+    <dcterms:identifier>model3</dcterms:identifier>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.606Z</dcterms:created>
+    <dcterms:publisher rdf:nodeID="A192"/>
+    <oslc:prefixDefinition rdf:nodeID="A193"/>
+    <oslc:prefixDefinition rdf:nodeID="A174"/>
+    <oslc:service rdf:nodeID="A194"/>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: model3</dcterms:description>
+    <oslc:service rdf:nodeID="A157"/>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <oslc:prefixDefinition rdf:nodeID="A195"/>
+    <dcterms:title rdf:parseType="Literal">model3</dcterms:title>
+    <oslc:service rdf:nodeID="A196"/>
+    <oslc:prefixDefinition rdf:nodeID="A197"/>
+    <oslc:prefixDefinition rdf:nodeID="A198"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A194">
+    <oslc:queryCapability rdf:nodeID="A199"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A200">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A201">
+    <oslc:queryCapability rdf:nodeID="A202"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A190">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A192">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A203">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A182">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model1/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A204">
+    <oslc:queryCapability rdf:nodeID="A205"/>
+    <oslc:creationFactory rdf:nodeID="A206"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A207">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A56">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model4/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A208">
+    <oslc:queryCapability rdf:nodeID="A13"/>
+    <oslc:creationFactory rdf:nodeID="A209"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A210">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A195">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A40">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A184">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A176">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model2/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A60">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model4">
+    <oslc:prefixDefinition rdf:nodeID="A211"/>
+    <oslc:service rdf:nodeID="A212"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.59Z</dcterms:created>
+    <oslc:prefixDefinition rdf:nodeID="A213"/>
+    <oslc:service rdf:nodeID="A214"/>
+    <oslc:prefixDefinition rdf:nodeID="A215"/>
+    <dcterms:publisher rdf:nodeID="A216"/>
+    <oslc:prefixDefinition rdf:nodeID="A217"/>
+    <oslc:service rdf:nodeID="A218"/>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: model4</dcterms:description>
+    <oslc:service rdf:nodeID="A219"/>
+    <oslc:prefixDefinition rdf:nodeID="A183"/>
+    <oslc:service rdf:nodeID="A0"/>
+    <oslc:prefixDefinition rdf:nodeID="A210"/>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <oslc:prefixDefinition rdf:nodeID="A220"/>
+    <dcterms:title rdf:parseType="Literal">model4</dcterms:title>
+    <oslc:prefixDefinition rdf:nodeID="A221"/>
+    <dcterms:identifier>model4</dcterms:identifier>
+    <oslc:prefixDefinition rdf:nodeID="A156"/>
+    <oslc:prefixDefinition rdf:nodeID="A168"/>
+    <oslc:service rdf:nodeID="A55"/>
+    <oslc:prefixDefinition rdf:nodeID="A222"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A202">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/TwoDOFRobotDynCon/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A172">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model1/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A199">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model3/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A213">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A223">
+    <oslc:queryCapability rdf:nodeID="A224"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A188">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A206">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model2/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A219">
+    <oslc:queryCapability rdf:nodeID="A225"/>
+    <oslc:creationFactory rdf:nodeID="A226"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A227">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A34">
+    <oslc:queryCapability rdf:nodeID="A228"/>
+    <oslc:creationFactory rdf:nodeID="A229"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A185">
+    <oslc:queryCapability rdf:nodeID="A230"/>
+    <oslc:creationFactory rdf:nodeID="A231"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A232">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A198">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model1">
+    <oslc:prefixDefinition rdf:nodeID="A49"/>
+    <dcterms:title rdf:parseType="Literal">model1</dcterms:title>
+    <oslc:service rdf:nodeID="A171"/>
+    <oslc:service rdf:nodeID="A233"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.621Z</dcterms:created>
+    <oslc:prefixDefinition rdf:nodeID="A69"/>
+    <oslc:prefixDefinition rdf:nodeID="A101"/>
+    <oslc:prefixDefinition rdf:nodeID="A155"/>
+    <dcterms:identifier>model1</dcterms:identifier>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: model1</dcterms:description>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <oslc:service rdf:nodeID="A234"/>
+    <oslc:prefixDefinition rdf:nodeID="A167"/>
+    <oslc:prefixDefinition rdf:nodeID="A179"/>
+    <oslc:service rdf:nodeID="A181"/>
+    <oslc:prefixDefinition rdf:nodeID="A203"/>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <oslc:prefixDefinition rdf:nodeID="A235"/>
+    <dcterms:publisher rdf:nodeID="A236"/>
+    <oslc:service rdf:nodeID="A223"/>
+    <oslc:prefixDefinition rdf:nodeID="A237"/>
+    <oslc:prefixDefinition rdf:nodeID="A227"/>
+    <oslc:service rdf:nodeID="A116"/>
+    <oslc:prefixDefinition rdf:nodeID="A238"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A239">
+    <oslc:queryCapability rdf:nodeID="A134"/>
+    <oslc:creationFactory rdf:nodeID="A109"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A236">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A216">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A38">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <oslc:label>Simulink Line Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11/lines"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/outputports">
+    <oslc:queryCapability rdf:nodeID="A73"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A215">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A191">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A205">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model2/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A226">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model4/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A119">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A238">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A224">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model1/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A240">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A220">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A231">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model3/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A83">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A186">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A225">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model4/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model2">
+    <oslc:prefixDefinition rdf:nodeID="A91"/>
+    <oslc:service rdf:nodeID="A169"/>
+    <oslc:prefixDefinition rdf:nodeID="A180"/>
+    <oslc:prefixDefinition rdf:nodeID="A111"/>
+    <oslc:prefixDefinition rdf:nodeID="A166"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <oslc:prefixDefinition rdf:nodeID="A207"/>
+    <oslc:prefixDefinition rdf:nodeID="A148"/>
+    <oslc:service rdf:nodeID="A89"/>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: model2</dcterms:description>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.606Z</dcterms:created>
+    <oslc:prefixDefinition rdf:nodeID="A160"/>
+    <oslc:prefixDefinition rdf:nodeID="A71"/>
+    <dcterms:publisher rdf:nodeID="A2"/>
+    <oslc:prefixDefinition rdf:nodeID="A23"/>
+    <oslc:service rdf:nodeID="A126"/>
+    <dcterms:title rdf:parseType="Literal">model2</dcterms:title>
+    <oslc:prefixDefinition rdf:nodeID="A106"/>
+    <oslc:prefixDefinition rdf:nodeID="A62"/>
+    <oslc:service rdf:nodeID="A175"/>
+    <oslc:service rdf:nodeID="A146"/>
+    <dcterms:identifier>model2</dcterms:identifier>
+    <oslc:service rdf:nodeID="A204"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A235">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A32">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A229">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A241">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/rm#"/>
+    <oslc:prefix>oslc_rm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A196">
+    <oslc:queryCapability rdf:nodeID="A242"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A193">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A125">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A233">
+    <oslc:queryCapability rdf:nodeID="A102"/>
+    <oslc:creationFactory rdf:nodeID="A243"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A43">
+    <dcterms:title rdf:parseType="Literal">Georgia Institute of Technology OSLC Project</dcterms:title>
+    <dcterms:identifier>urn:oslc:ServiceProvider</dcterms:identifier>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Publisher"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A74">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A221">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A230">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model3/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A212">
+    <oslc:queryCapability rdf:nodeID="A244"/>
+    <oslc:creationFactory rdf:nodeID="A245"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A122">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A137">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A237">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A33">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A228">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A246">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A242">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model3/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/catalog/singleton">
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model1"/>
+    <dcterms:description rdf:parseType="Literal">OSLC Service Provider Catalog</dcterms:description>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model11"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model11AfterRT4"/>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/sldemo_househeat"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model15"/>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model4"/>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/TwoDOFRobotDynCon"/>
+    <dcterms:title rdf:parseType="Literal">OSLC Service Provider Catalog</dcterms:title>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model3"/>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model11AfterRT"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProviderCatalog"/>
+    <dcterms:publisher rdf:nodeID="A54"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <oslc:serviceProvider rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A197">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A120">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A138">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A243">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:label>Simulink Block Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model1/blocks"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A45">
+    <oslc:prefixBase rdf:resource="http://purl.org/dc/terms/"/>
+    <oslc:prefix>dcterms</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A247">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/scm#"/>
+    <oslc:prefix>oslc_scm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A80">
+    <oslc:queryCapability rdf:nodeID="A248"/>
+    <oslc:creationFactory rdf:nodeID="A249"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A222">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A187">
+    <oslc:queryCapability rdf:nodeID="A145"/>
+    <oslc:creationFactory rdf:nodeID="A110"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A245">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model4/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A121">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A234">
+    <oslc:queryCapability rdf:nodeID="A250"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A30">
+    <oslc:queryCapability rdf:nodeID="A251"/>
+    <oslc:creationFactory rdf:nodeID="A252"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A253">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A254">
+    <oslc:queryCapability rdf:nodeID="A255"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A189">
+    <oslc:queryCapability rdf:nodeID="A256"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A214">
+    <oslc:queryCapability rdf:nodeID="A257"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A142">
+    <oslc:queryCapability rdf:nodeID="A258"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A141">
+    <oslc:prefixBase rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <oslc:prefix>foaf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A44">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/core#"/>
+    <oslc:prefix>oslc</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A259">
+    <oslc:prefixBase rdf:resource="http://mathworks.com/simulink/rdf#"/>
+    <oslc:prefix>simulink</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A104">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/TwoDOFRobotDynCon">
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <oslc:service rdf:nodeID="A162"/>
+    <oslc:prefixDefinition rdf:nodeID="A57"/>
+    <oslc:prefixDefinition rdf:nodeID="A113"/>
+    <oslc:service rdf:nodeID="A201"/>
+    <dcterms:publisher rdf:nodeID="A48"/>
+    <oslc:prefixDefinition rdf:nodeID="A108"/>
+    <oslc:service rdf:nodeID="A239"/>
+    <oslc:prefixDefinition rdf:nodeID="A99"/>
+    <oslc:prefixDefinition rdf:nodeID="A88"/>
+    <oslc:prefixDefinition rdf:nodeID="A178"/>
+    <oslc:service rdf:nodeID="A208"/>
+    <oslc:prefixDefinition rdf:nodeID="A161"/>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: TwoDOFRobotDynCon</dcterms:description>
+    <oslc:prefixDefinition rdf:nodeID="A150"/>
+    <oslc:prefixDefinition rdf:nodeID="A133"/>
+    <oslc:prefixDefinition rdf:nodeID="A200"/>
+    <dcterms:identifier>TwoDOFRobotDynCon</dcterms:identifier>
+    <oslc:service rdf:nodeID="A152"/>
+    <oslc:service rdf:nodeID="A114"/>
+    <dcterms:title rdf:parseType="Literal">TwoDOFRobotDynCon</dcterms:title>
+    <oslc:prefixDefinition rdf:nodeID="A68"/>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.621Z</dcterms:created>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A211">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A244">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model4/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A124">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A250">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model1/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A252">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A260">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <oslc:prefix>rdf</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/inputports">
+    <oslc:queryCapability rdf:nodeID="A132"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/inputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A255">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A249">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:label>Simulink Parameter Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT4/parameters"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/serviceProviders/model11AfterRT">
+    <dcterms:title rdf:parseType="Literal">model11AfterRT</dcterms:title>
+    <oslc:service rdf:nodeID="A59"/>
+    <oslc:service rdf:nodeID="A261"/>
+    <oslc:prefixDefinition rdf:nodeID="A50"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-05-04T11:25:52.621Z</dcterms:created>
+    <oslc:prefixDefinition rdf:nodeID="A70"/>
+    <oslc:service rdf:nodeID="A262"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#ServiceProvider"/>
+    <oslc:prefixDefinition rdf:nodeID="A247"/>
+    <oslc:prefixDefinition rdf:nodeID="A241"/>
+    <oslc:prefixDefinition rdf:nodeID="A263"/>
+    <oslc:prefixDefinition rdf:nodeID="A18"/>
+    <oslc:prefixDefinition rdf:nodeID="A259"/>
+    <oslc:prefixDefinition rdf:nodeID="A240"/>
+    <oslc:service rdf:nodeID="A103"/>
+    <oslc:service rdf:nodeID="A254"/>
+    <oslc:prefixDefinition rdf:nodeID="A253"/>
+    <oslc:details rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/details"/>
+    <dcterms:publisher rdf:nodeID="A232"/>
+    <oslc:prefixDefinition rdf:nodeID="A260"/>
+    <dcterms:identifier>model11AfterRT</dcterms:identifier>
+    <dcterms:description rdf:parseType="Literal">Service provider for Simulink model: model11AfterRT</dcterms:description>
+    <oslc:service rdf:nodeID="A51"/>
+    <oslc:prefixDefinition rdf:nodeID="A246"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A256">
+    <oslc:label>Simulink Model Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Model Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/model"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model3/model"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Model"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A257">
+    <oslc:label>Simulink Output Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Output Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/outputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model4/outputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Outputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/blocks">
+    <oslc:queryCapability rdf:nodeID="A264"/>
+    <oslc:creationFactory rdf:nodeID="A149"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/block/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A264">
+    <oslc:label>Simulink Block Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Block Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/block"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/sldemo_househeat/blocks"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Block"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A258">
+    <oslc:label>Simulink Input Port Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Input Port Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/inputport"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model15/inputports"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Inputport"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A135">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/qm#"/>
+    <oslc:prefix>oslc_qm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A39">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/servicemanagement/1.0/"/>
+    <oslc:prefix>oslc_data</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A36">
+    <oslc:queryCapability rdf:nodeID="A8"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/outputport/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A261">
+    <oslc:queryCapability rdf:nodeID="A28"/>
+    <oslc:creationFactory rdf:nodeID="A9"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/parameter/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A218">
+    <oslc:queryCapability rdf:nodeID="A46"/>
+    <oslc:creationFactory rdf:nodeID="A11"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/line/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A217">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A123">
+    <oslc:prefixBase rdf:resource="http://open-services.net/ns/cm#"/>
+    <oslc:prefix>oslc_cm</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A209">
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/line"/>
+    <oslc:label>Simulink Line Creation</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Line Creation Factory</dcterms:title>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Line"/>
+    <oslc:creation rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/TwoDOFRobotDynCon/lines"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#CreationFactory"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A251">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A263">
+    <oslc:prefixBase rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <oslc:prefix>rdfs</oslc:prefix>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#PrefixDefinition"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A262">
+    <oslc:queryCapability rdf:nodeID="A19"/>
+    <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A248">
+    <oslc:label>Simulink Parameter Catalog Query</oslc:label>
+    <dcterms:title rdf:parseType="Literal">Simulink Parameter Query Capability</dcterms:title>
+    <oslc:resourceShape rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/resourceShapes/parameter"/>
+    <oslc:queryBase rdf:resource="https://vservices.offis.de/rtp/simulink/v1.0/services/model11AfterRT4/parameters"/>
+    <oslc:usage rdf:resource="http://open-services.net/ns/core#default"/>
+    <oslc:resourceType rdf:resource="http://mathworks.com/simulink/rdf#Parameter"/>
+    <rdf:type rdf:resource="http://open-services.net/ns/core#QueryCapability"/>
+  </rdf:Description>
+</rdf:RDF>

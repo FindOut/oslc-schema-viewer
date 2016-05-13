@@ -1,23 +1,9 @@
-HTTP/1.1 302 Found
-Date: Tue, 10 May 2016 10:07:17 GMT
-Server: Jetty(9.3.8.v20160314)
-Location: https://vservices.offis.de/rtp/simulink/v1.0/services/catalog/singleton
-Content-Length: 0
-Content-Type: text/plain
-
-HTTP/1.1 200 OK
-Date: Tue, 10 May 2016 10:07:18 GMT
-Server: Jetty(9.3.8.v20160314)
-OSLC-Core-Version: 2.0
-Content-Type: application/rdf+xml
-Transfer-Encoding: chunked
-
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:oslc="http://open-services.net/ns/core#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" >
   <rdf:Description rdf:nodeID="A0">
     <oslc:queryCapability rdf:nodeID="A1"/>
     <oslc:domain rdf:resource="http://mathworks.com/simulink/r2013a/model/rdf#"/>

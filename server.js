@@ -31,9 +31,11 @@ app.get('/proxy', function(request, response) {
       response.header('Access-Control-Allow-Origin', '*');
       var result = body
         .replace(/bugzilla/g, 'simulink')
-        // .replace(/simulink/g, 'bugzilla')
+      //  .replace(/simulink/g, 'bugzilla')
         .replace(/http:\/\/10\.238\.2\.156:8080\/oslc4jsimulink/g,
           'https://vservices.offis.de/rtp/simulink/v1.0/services')
+        .replace(/http:\/\/10\.238\.2\.156:8080\/oslc4jbugzilla/g,
+          'https://vservices.offis.de/rtp/bugzilla/v1.0/services')
         // .replace(/http:\/\/10\.238\.2\.156:8080\/oslc4jbugzilla\/resourceShapes\/changeRequest/g,
         //   'https://vservices.offis.de/rtp/bugzilla/v1.0/services/catalog')
         // .replace(//g, '')

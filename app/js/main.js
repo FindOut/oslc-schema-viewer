@@ -17,13 +17,15 @@ fetchIndexedJsonLd(catalogUrl).then(function(indexedCatalog) {
     console.log('serviceProviderUrl', serviceProviderUrl);
     return fetchIndexedJsonLd(serviceProviderUrl).then(function(indexedServiceProvider) {
       console.log(serviceProviderUrl, indexedServiceProvider);
-      var serviceId = indexedServiceProvider[serviceProviderUrl]['http://open-services.net/ns/core#service'][0]['@id'];
-      var creationFactoryId = indexedServiceProvider[serviceId]['http://open-services.net/ns/core#queryCapability'][0]['@id'];
-      var resourceShapeUrl = indexedServiceProvider[creationFactoryId]['http://open-services.net/ns/core#resourceShape'][0]['@id'];
-      console.log('  resourceShapeUrl', resourceShapeUrl);
-      return fetchIndexedJsonLd(resourceShapeUrl).then(function(indexedResourceShape) {
-        return addResourcePropsToMap(serviceProviderUrl, resourceShapeUrl, indexedResourceShape)
-      });
+      return Promise.all(_.map(indexedServiceProvider[serviceProviderUrl]['http://open-services.net/ns/core#service'], function(serviceObj) {
+        var serviceId = serviceObj['@id'];
+        var creationFactoryId = indexedServiceProvider[serviceId]['http://open-services.net/ns/core#queryCapability'][0]['@id'];
+        var resourceShapeUrl = indexedServiceProvider[creationFactoryId]['http://open-services.net/ns/core#resourceShape'][0]['@id'];
+        console.log('  resourceShapeUrl', resourceShapeUrl);
+        return fetchIndexedJsonLd(resourceShapeUrl).then(function(indexedResourceShape) {
+          return addResourcePropsToMap(serviceProviderUrl, resourceShapeUrl, indexedResourceShape);
+        });
+      }));
     });
   })).then(function(resultList) {
     console.log('resultMap', resultMap);
@@ -33,7 +35,9 @@ fetchIndexedJsonLd(catalogUrl).then(function(indexedCatalog) {
 .then(renderHtmlPropsTable)
 .catch(function (error) {
   console.error(error);
-});
+  console.error(error.stack);
+})
+;
 
 function fetchIndexedJsonLd(url) {
   // console.log('1/4 fetchIndexedJsonLd(',url,')');
@@ -50,14 +54,14 @@ function fetchIndexedJsonLd(url) {
 }
 
 function fetchXml(url) {
-  console.log('fetchXml', url);
+  // console.log('fetchXml', url);
   return new Promise(function(fulfill, reject) {
     d3.xml('/proxy?url=' + encodeURIComponent(url), function(error, doc) {
       if (error) {
-        console.log('fetchXml error', error);
+        // console.log('fetchXml error', error);
         reject(error);
       } else {
-        console.log('fetchXml document', doc);
+        // console.log('fetchXml document', doc);
         fulfill(doc);
       }
     });
@@ -68,7 +72,7 @@ function addResourcePropsToMap(serviceProviderUrl, resourceShapeUrl, indexedReso
   console.log('addResourcePropsToMap', serviceProviderUrl, resourceShapeUrl, indexedResourceShape);
   var shape = _.find(indexedResourceShape, (value, key)=>value['@type']=='http://open-services.net/ns/core#ResourceShape');
   var resourceType = shape['http://open-services.net/ns/core#describes'][0]['@id'];
-  console.log('resourceType', resourceType);
+  // console.log('resourceType', resourceType);
   if (!resultMap[serviceProviderUrl]) {
     resultMap[serviceProviderUrl] = {};
   }
@@ -96,9 +100,9 @@ function addResourcePropsToMap(serviceProviderUrl, resourceShapeUrl, indexedReso
 }
 
 function renderHtmlPropsTable(resultMap) {
-  console.log('renderHtmlPropsTable(', resultMap, ')');
+  // console.log('renderHtmlPropsTable(', resultMap, ')');
   _.forEach(resultMap, function(spResourceProps, serviceProviderUrl) {
-    console.log('renderHtmlPropsTable key', serviceProviderUrl);
+    // console.log('renderHtmlPropsTable key', serviceProviderUrl);
     d3.select('#graph').append('h2').text(serviceProviderUrl);
     _.forEach(spResourceProps, function(props, id) {
       d3.select('#graph').append('h3').text(id);
@@ -106,13 +110,13 @@ function renderHtmlPropsTable(resultMap) {
       table.append('tr').attr('class', 'thead');
       var keys = ['name', 'valueType', 'occurs', 'readOnly'];
       table.select('tr').selectAll('td')
-      .data(keys).enter().append('td').attr('class', 'thead').text(d=>d);
+        .data(keys).enter().append('td').attr('class', 'thead').text(d=>d);
       table.selectAll('.proprow')
-      .data(props, d=>d.id)
-      .enter().append('tr')
-      .attr('class', '.proprow')
-      .selectAll('td')
-      .data(d=>_.map(keys, key=>d[key])).enter().append('td').text(d=>d);
+        .data(props, d=>d.id)
+        .enter().append('tr')
+        .attr('class', '.proprow')
+        .selectAll('td')
+        .data(d=>_.map(keys, key=>d[key])).enter().append('td').text(d=>d);
     });
   });
 }

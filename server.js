@@ -5,6 +5,7 @@ var config = require("./webpack.config.js");
 var path = require('path');
 var http = require('request');
 var local_config = require('./local.config.json');
+var fs = require('fs');
 
 var port = 3011;
 
@@ -36,10 +37,8 @@ app.get('/proxy', function(request, response) {
           'https://vservices.offis.de/rtp/simulink/v1.0/services')
         .replace(/http:\/\/10\.238\.2\.156:8080\/oslc4jbugzilla/g,
           'https://vservices.offis.de/rtp/bugzilla/v1.0/services')
-        // .replace(/http:\/\/10\.238\.2\.156:8080\/oslc4jbugzilla\/resourceShapes\/changeRequest/g,
-        //   'https://vservices.offis.de/rtp/bugzilla/v1.0/services/catalog')
-        // .replace(//g, '')
         ;
+      saveToCache(request.query.url, result);
       console.log(result);
       response.send(result);
     }
@@ -50,3 +49,11 @@ app.use('/', express.static(path.resolve('./app')));
 app.listen(port, function() {
   console.log('listening at localhost:' + port);
 });
+
+var cacheFolder = 'cache';
+if (!fs.existsSync(cacheFolder)){
+    fs.mkdirSync(cacheFolder);
+}
+function saveToCache(url, result) {
+  fs.writeFile(path.join(cacheFolder, encodeURIComponent(url)) + '.xml', result, 'utf8');
+}

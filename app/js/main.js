@@ -6,29 +6,33 @@ var RdfXmlParser = require('rdf-parser-rdfxml');
 
 var parser = new RdfXmlParser();
 var catalogUrl = 'https://vservices.offis.de/rtp/simulink/v1.0/services/catalog/singleton';
-var resultMap = {};
+var resultMap = {}; // {<sp>: {<resource>: {<prop>: {name: xxx, ...}, ...}, ...}}
 fetchIndexedJsonLd(catalogUrl).then(function(indexedCatalog) {
-  console.log(catalogUrl, indexedCatalog);
+  // got a service provider catalog - find all service providers in it
+  // console.log(catalogUrl, indexedCatalog);
   var serviceProviderUrls = indexedCatalog[catalogUrl]['http://open-services.net/ns/core#serviceProvider'];
-  console.log(serviceProviderUrls);
   // promise with first resourceShape for queryCapability for each serviceProvider in indexedCatalog
   return Promise.all(_.map(serviceProviderUrls, function(serviceProviderUrlObj) {
     var serviceProviderUrl = serviceProviderUrlObj['@id'];
-    console.log('serviceProviderUrl', serviceProviderUrl);
+    // console.log('serviceProviderUrl', serviceProviderUrl);
     return fetchIndexedJsonLd(serviceProviderUrl).then(function(indexedServiceProvider) {
-      console.log(serviceProviderUrl, indexedServiceProvider);
+      // got a serviceProvider - find all services in it
+      // console.log(serviceProviderUrl, indexedServiceProvider);
       return Promise.all(_.map(indexedServiceProvider[serviceProviderUrl]['http://open-services.net/ns/core#service'], function(serviceObj) {
+        // got a service - find resource shape in it
         var serviceId = serviceObj['@id'];
         var creationFactoryId = indexedServiceProvider[serviceId]['http://open-services.net/ns/core#queryCapability'][0]['@id'];
         var resourceShapeUrl = indexedServiceProvider[creationFactoryId]['http://open-services.net/ns/core#resourceShape'][0]['@id'];
-        console.log('  resourceShapeUrl', resourceShapeUrl);
+        // console.log('  resourceShapeUrl', resourceShapeUrl);
         return fetchIndexedJsonLd(resourceShapeUrl).then(function(indexedResourceShape) {
+          // got resourceShape - traverse and put props into index
           return addResourcePropsToMap(serviceProviderUrl, resourceShapeUrl, indexedResourceShape);
         });
       }));
     });
   })).then(function(resultList) {
-    console.log('resultMap', resultMap);
+    // get here when all reource shapes are loaded and their props indexed into resultMap
+    // console.log('resultMap', resultMap);
     return resultMap;
   });
 })
@@ -69,7 +73,7 @@ function fetchXml(url) {
 }
 
 function addResourcePropsToMap(serviceProviderUrl, resourceShapeUrl, indexedResourceShape) {
-  console.log('addResourcePropsToMap', serviceProviderUrl, resourceShapeUrl, indexedResourceShape);
+  // console.log('addResourcePropsToMap', serviceProviderUrl, resourceShapeUrl, indexedResourceShape);
   var shape = _.find(indexedResourceShape, (value, key)=>value['@type']=='http://open-services.net/ns/core#ResourceShape');
   var resourceType = shape['http://open-services.net/ns/core#describes'][0]['@id'];
   // console.log('resourceType', resourceType);

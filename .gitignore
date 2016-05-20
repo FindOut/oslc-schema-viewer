@@ -1,2 +1,4 @@
 node_modules
 local.config.json
+cache
+npm-debug.log

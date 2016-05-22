@@ -11,7 +11,7 @@
     "express": "^4.13.4",
     "jsonld": "^0.4.11",
     "opener": "^1.4.1",
-    "rdf-parser-rdfxml": "^0.3.1",
+    "rdf-parser-rdfxml": "https://github.com/FindOut/rdf-parser-rdfxml",
     "request": "^2.72.0",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1"

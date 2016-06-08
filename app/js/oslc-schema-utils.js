@@ -2,9 +2,9 @@ var _ = require('lodash');
 var Promise = require('promise');
 var RdfXmlParser = require('rdf-parser-rdfxml');
 
-function OSLC(suffix) {
-  return 'http://open-services.net/ns/core#' + suffix;
-}
+let OSLC = suffix => 'http://open-services.net/ns/core#' + suffix;
+let RDF = suffix => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#' + suffix;
+let OSLCKTH = suffix => 'http://oslc.kth.se/core#' + suffix;
 
 var parser = new RdfXmlParser();
 let hasResourceTypePredicate = parser.rdf.createNamedNode('http://oslc.kth.se/core#hasResourceType');
@@ -12,7 +12,7 @@ let hasResourceShapePredicate = parser.rdf.createNamedNode('http://oslc.kth.se/c
 
 export function renderHtmlPropsTable(graph) {
   let previousDomainName;
-  matchForEachTriple(graph, null, hasResourceTypePredicate, null, function(triple) {
+  matchForEachTriple(graph, null, OSLCKTH('hasResourceType'), null, function(triple) {
     // emit domain name title
     let domainName = triple.subject.toString();
     if (previousDomainName !== domainName) {
@@ -22,7 +22,7 @@ export function renderHtmlPropsTable(graph) {
     // emit resource type title
     d3.select('#graph').append('h2').text(triple.object.toString());
 
-    matchForEachTriple(graph, triple.object, hasResourceShapePredicate, null, function(resourceShapeUriTriple) {
+    matchForEachTriple(graph, triple.object, OSLCKTH('hasResourceShape'), null, function(resourceShapeUriTriple) {
       // emit resource shape table and header
       var table = d3.select('#graph').append('table');
       table.append('tr').attr('class', 'thead');
@@ -72,11 +72,18 @@ export function matchForEachTriple(graph, subject, predicate, object, callback) 
   });
 }
 
+function makeNameNodeIfString(s) {
+    if (s instanceof String || typeof s === 'string') {
+      return parser.rdf.createNamedNode(s);
+    }
+    return s;
+}
+
 // adds triple to graph, if not found
 // subject, predicate and object must all be truthy
 export function addTriple(graph, subject, predicate, object) {
   if (subject && predicate && object && graph.match(subject, predicate, object).length == 0) {
-    let triple = parser.rdf.createTriple(subject, predicate, object);
+    let triple = parser.rdf.createTriple(makeNameNodeIfString(subject), makeNameNodeIfString(predicate), makeNameNodeIfString(object));
     graph.add(triple);
   }
 }
@@ -110,7 +117,7 @@ export function fetchGraph(url, tripleMap) {
 export function fetchXml(url) {
   // console.log('fetchXml', url);
   return new Promise(function(fulfill, reject) {
-    d3.xml('/proxy?url=' + encodeURIComponent(url), function(error, doc) {
+    d3.xml('http://localhost:3011/proxy?url=' + encodeURIComponent(url), function(error, doc) {
       if (error) {
         // console.log('fetchXml error', error);
         reject(error);
@@ -144,4 +151,54 @@ export function graphToString(graph) {
     graphString += tripleToString(triple) + '\n';
   }
   return graphString;
+}
+
+function renderHtmlPropsTable(graph) {
+  let previousDomainName;
+  matchForEachTriple(graph, null, OSLCKTH('hasResourceType'), null, function(triple) {
+    // emit domain name title
+    let domainName = triple.subject.toString();
+    if (previousDomainName !== domainName) {
+      d3.select('#graph').append('h2').text(domainName);
+      previousDomainName = domainName;
+    }
+    // emit resource type title
+    d3.select('#graph').append('h2').text(triple.object.toString());
+
+    matchForEachTriple(graph, triple.object, OSLCKTH('hasResourceShape'), null, function(resourceShapeUriTriple) {
+      // emit resource shape table and header
+      var table = d3.select('#graph').append('table');
+      table.append('tr').attr('class', 'thead');
+      var keys = ['name', 'valueType', 'occurs', 'readOnly'];
+      table.select('tr').selectAll('td')
+        .data(keys).enter().append('td').attr('class', 'thead').text(d=>d);
+
+      // emit resource shape properties
+      let propsProps = getPropsProps(graph, resourceShapeUriTriple.object, keys);
+      _.forEach(propsProps, function(propProps) {
+        table.append('tr')
+        .attr('class', '.proprow')
+        .selectAll('td')
+        .data(propProps).enter().append('td').text(d=>d);
+      });
+    });
+
+  });
+}
+
+// returns array of props, each an array of values for each prop name in propPropNames
+export function getPropsProps(graph, resourceShapeUri, propPropNames) {
+  let result = [];
+  matchForEachTriple(graph, resourceShapeUri, OSLC('property'), null, function(propertyUriTriple) {
+    let propertyTriples = graph.match(propertyUriTriple.object, null, null);
+    result.push(_.map(propPropNames,
+      key=>getOneObjectString(propertyTriples, propertyUriTriple.object, OSLC(key))
+      .replace('http://open-services.net/ns/core#', 'oslc:')
+      .replace('http://open-services.net/ns/cm#', 'cm:')
+      .replace('http://purl.org/dc/terms/', 'purl:')
+      .replace('http://www.w3.org/2001/XMLSchema#', 'xsd:')
+      .replace('http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'rdf:')
+    ));
+  });
+  return result;
 }

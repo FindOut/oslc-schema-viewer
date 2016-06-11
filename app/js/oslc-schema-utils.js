@@ -84,6 +84,7 @@ function makeNameNodeIfString(s) {
 export function addTriple(graph, subject, predicate, object) {
   if (subject && predicate && object && graph.match(subject, predicate, object).length == 0) {
     let triple = parser.rdf.createTriple(makeNameNodeIfString(subject), makeNameNodeIfString(predicate), makeNameNodeIfString(object));
+    // console.log('addTriple(' + tripleToString(triple) + ')');
     graph.add(triple);
   }
 }

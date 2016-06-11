@@ -66,7 +66,7 @@ function DiagramWorksheetRenderer(nodeClass) {
   function layoutSetterGetter(newLayout) {
     if (!newLayout) {return layout}
     layout = newLayout;
-    return renderer;
+    return this;
   }
 
   return {

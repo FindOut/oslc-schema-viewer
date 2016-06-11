@@ -1,3 +1,11 @@
+td.thead {
+  background-color: #ddd;
+}
+
+td {
+  background-color: #f8f8f8;
+}
+
 body  {
   padding: 0;
   margin: 0;

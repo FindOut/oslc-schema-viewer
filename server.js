@@ -17,7 +17,9 @@ app.get('/proxy', function (request, response) {
 
   var useCache = true;
   if (useCache) {
-    response.header('ETag', 'asdqweasd');
+    response.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    response.header('Pragma', 'no-cache');
+    response.header('Expires', '0');
     response.header('Content-Type', 'application/xml');
     response.header('Access-Control-Allow-Origin', '*');
     response.send(getFromCache(request.query.url));

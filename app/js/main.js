@@ -35,7 +35,6 @@ if (false) {
     renderHierarchy(d3.select('#graph svg .worksheet'), getOSLCSchemaChildren, getOSLCSchemaRenderer);
     diagramWorksheetRenderer.layout()(d3.select('#graph svg .worksheet'));
     renderHierarchy(d3.select('#graph svg .worksheet'), getRelations, getRelationRenderer);
-    console.log('relations', getRelations(undefined));
 
     d3.selectAll('.node').call(nodeManipulator);
     // d3.selectAll('svg .relation').call(relationManipulator);

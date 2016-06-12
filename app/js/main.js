@@ -10,7 +10,7 @@ var connector = new OSLCSchemaConnector(d => {model = d});
 
 // set up and listen to url field
 let urlField = d3.select('#urlField').node();
-urlField.value = 'https://vservices.offis.de/rtp/simulink/v1.0/services/catalog/singleton';
+urlField.value = 'https://vservices.offis.de/rtp/simulink/v1.0/services/catalog/singleton,https://vservices.offis.de/rtp/bugzilla/v1.0/services/catalog/singleton';
 urlField.onchange = function() {connector.open(urlField.value);};
 
 if (false) {

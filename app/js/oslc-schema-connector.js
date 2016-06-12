@@ -46,6 +46,9 @@ export function getOSLCSchemaRenderer(d) {
 }
 
 // returns a list of children of parentData
+// parentData=undefined: list of domain URIs
+// parentData=a domain uri: list of resource type uris in this domain
+// other: empty list
 export function getOSLCSchemaChildren(parentData) {
   if (parentData) {
     let type = getRdfType(parentData);
@@ -61,6 +64,7 @@ export function getOSLCSchemaChildren(parentData) {
   }
 }
 
+// returns all relations as a list of {type: 'relation', from: sourceResourceTypeUri, to: targetResourceTypeUri}
 export function getRelations(parentData) {
   if (parentData) {
     return [];
@@ -91,8 +95,14 @@ export function OSLCSchemaConnector(modelSetter) {
     fireEvent('read-begin');
 
     // fetch catalog
-    fetchGraph(catalogUrl).then(function(graph) {
-      currentGraph = graph;
+    Promise.all(_.map(catalogUrl.split(','), url => fetchGraph(url.trim())))
+    .then(function(catalogGraphs) {
+      currentGraph = parser.rdf.createGraph();
+      _.forEach(catalogGraphs, function(graph) {
+        currentGraph.addAll(graph.toArray());
+      });
+      return currentGraph;
+    }).then(function(graph) {
       let resourceShapeUriSet = {}; // collect all unique resourceShape URIs here
       // for each serviceProvider
       matchForEachTriple(graph, null, RDF('type'), OSLC('ServiceProvider'), function(serviceProviderUriTriple) {

@@ -3,7 +3,7 @@ import {
   SvgRenderer, DiagramWorksheetRenderer, RelationRenderer, hboxLayout, vboxLayout, renderHierarchy, Manipulator,
   DeleteNodeTool, MoveNodeTool, MoveDuplicateNodeTool, CreateRelationTool, SelectTool, utils
 } from './modeling/index';
-import {OSLCSchemaConnector, getOSLCSchemaChildren, getOSLCSchemaRenderer, getRdfType, renderHtml} from './oslc-schema-connector.js';
+import {OSLCSchemaConnector, getOSLCSchemaChildren, getOSLCSchemaRenderer, getRdfType, renderHtml, getRelations} from './oslc-schema-connector.js';
 
 // var connector = new HttpConnector(d => {model = d});
 var connector = new OSLCSchemaConnector(d => {model = d});
@@ -26,11 +26,16 @@ if (false) {
   var diagramWorksheetRenderer = new DiagramWorksheetRenderer('worksheet').layout(hboxLayout());
   var relationRenderer = new RelationRenderer('relation');
 
+  function getRelationRenderer(d) {
+    return {'relation': relationRenderer.render}[d.type];
+  }
+
   var renderModel = function() {
     diagramWorksheetRenderer.render(d3.select('#graph svg'), [{id: 'ws'}]);
     renderHierarchy(d3.select('#graph svg .worksheet'), getOSLCSchemaChildren, getOSLCSchemaRenderer);
     diagramWorksheetRenderer.layout()(d3.select('#graph svg .worksheet'));
-    // renderHierarchy(d3.select('#graph svg .worksheet'), getFlatChildren, getRelationRenderer);
+    renderHierarchy(d3.select('#graph svg .worksheet'), getRelations, getRelationRenderer);
+    console.log('relations', getRelations(undefined));
 
     d3.selectAll('.node').call(nodeManipulator);
     // d3.selectAll('svg .relation').call(relationManipulator);

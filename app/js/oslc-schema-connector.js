@@ -65,7 +65,16 @@ export function getRelations(parentData) {
   if (parentData) {
     return [];
   } else {
-
+    let rels = [];
+    matchForEachTriple(currentGraph, null, OSLCKTH('hasResourceShape'), null, function(resourceShapeUriTriple) {
+      matchForEachTriple(currentGraph, resourceShapeUriTriple.object, OSLC('property'), null, function(propertyUriTriple) {
+        let range = getOneObject(currentGraph, propertyUriTriple.object, OSLC('range'));
+        if (range) {
+          rels.push({type: 'relation', from: resourceShapeUriTriple.subject.toString(), to: range.toString()});
+        }
+      });
+    });
+    return rels;
   }
 }
 
@@ -85,7 +94,6 @@ export function OSLCSchemaConnector(modelSetter) {
     fetchGraph(catalogUrl).then(function(graph) {
       currentGraph = graph;
       let resourceShapeUriSet = {}; // collect all unique resourceShape URIs here
-      let resourceTypeUriSet = {}; // collect all unique resourceType URIs here
       // for each serviceProvider
       matchForEachTriple(graph, null, RDF('type'), OSLC('ServiceProvider'), function(serviceProviderUriTriple) {
         // for each service
@@ -101,13 +109,13 @@ export function OSLCSchemaConnector(modelSetter) {
               let resourceType = getOneObject(graph, handlerTriple.object, OSLC('resourceType'));
               // add domain to resource type relation to simplify grouping by domain
               addTriple(graph, serviceDomainHostname, OSLCKTH('hasResourceType'), resourceType);
+              // mar domain with type
               addTriple(graph, serviceDomainHostname, RDF('type'), OSLCKTH('SchemaDomain'));
 
               // collect and map all unique resource shapes to resourceType
               matchForEachTriple(graph, handlerTriple.object, OSLC('resourceShape'), null, function(resourceShapeUriTriple) {
                 let resourceTypeString = resourceType || 'no resource type';
                 resourceShapeUriSet[resourceShapeUriTriple.object.toString()] = resourceTypeString;
-                resourceTypeUriSet[resourceTypeString] = resourceShapeUriTriple.object.toString();
               });
             });
           }
@@ -151,8 +159,8 @@ export function OSLCSchemaConnector(modelSetter) {
     });
   }
 
-  function createMissingResourceType(newResourceTypeUri, resourceTypeUriSet) {
-    if (!resourceTypeUriSet[newResourceTypeUri]) {
+  function createMissingResourceType(newResourceTypeUri, resourceShapeUriSet) {
+    if (!resourceShapeUriSet[newResourceTypeUri]) {
       let shapeUri = parser.rdf.createBlankNode();
       let newDomain = new URL(newResourceTypeUri).origin
       // find domain
@@ -171,7 +179,7 @@ export function OSLCSchemaConnector(modelSetter) {
 
         // create shape
         addTriple(currentGraph, newResourceTypeUri, OSLCKTH('hasResourceShape'), shapeUri);
-        resourceTypeUriSet[newResourceTypeUri] = shapeUri;
+        resourceShapeUriSet[newResourceTypeUri] = shapeUri;
       }
     }
   }

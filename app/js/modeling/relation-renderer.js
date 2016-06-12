@@ -10,7 +10,9 @@ function defaultRelationLayout(relationNode) {
   var fromNodeId = 'node_' + relation.from;
   var toNodeId = 'node_' + relation.to;
   var fromNode = document.getElementById(fromNodeId);
+  fromNode || console.log('RelationRenderer missing fromNode:', fromNodeId);
   var toNode = document.getElementById(toNodeId);
+  toNode || console.log('RelationRenderer missing toNode:', toNodeId);
   var fromEl = d3.select(fromNode).select('rect');
   var toEl = d3.select(toNode).select('rect');
   if (fromEl.node() && toEl.node()) {

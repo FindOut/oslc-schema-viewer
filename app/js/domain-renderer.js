@@ -6,7 +6,7 @@ import {utils, vboxLayout} from './modeling/index';
 // Assumes each data item has an id attribute.
 // if there is a text attribute, it is displayed centered in the box
 // nodeClass is used to type the rendered g elements
-function DomainRenderer(nodeClass) {
+function DomainRenderer(nodeClass, prefixes) {
   function render(parentElement, dataArray) {
     var defaultSize = {width: 50, height: 30};
     var nodes = parentElement.selectAll('.' + nodeClass)

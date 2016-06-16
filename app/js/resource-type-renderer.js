@@ -6,7 +6,7 @@ import {utils, vboxLayout} from './modeling/index';
 // Assumes each data item has an id attribute.
 // if there is a text attribute, it is displayed centered in the box
 // nodeClass is used to type the rendered g elements
-function ResourceTypeRenderer(nodeClass, propsPropsGetter) {
+function ResourceTypeRenderer(nodeClass, propsPropsGetter, prefixes) {
   function render(parentElement, resourceTypeUris) {
     var defaultSize = {width: 50, height: 30};
     var nodes = parentElement.selectAll('.' + nodeClass)
@@ -36,7 +36,7 @@ function ResourceTypeRenderer(nodeClass, propsPropsGetter) {
           this.preferredSize = function() {
             var titleBBox = d3.select(this).select('.title').node().getBBox();
             var propsBBox = d3.select(this).select('.props').node().getBBox();
-            var width = Math.max(defaultSize.width, titleBBox.x + titleBBox.width + 10);
+            var width = Math.max(defaultSize.width, titleBBox.x + Math.max(titleBBox.width, propsBBox.width) + 10);
             var height = Math.max(defaultSize.height, propsBBox.y + titleBBox.height + propsBBox.height + 11);
             return {width: width, height: height};
           };
@@ -57,7 +57,7 @@ function ResourceTypeRenderer(nodeClass, propsPropsGetter) {
       .data(d => [d]);
     nodeRows.enter().append('tspan')
       .attr({x: '.5em', dy: '.9em'});
-    nodeRows.text(d => d);
+    nodeRows.text(d => prefixes.shrink(d));
     nodeRows.attr('fill', 'black');
     nodeRows.exit().remove();
 

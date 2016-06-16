@@ -17,17 +17,28 @@ let schemaDomainType = parser.rdf.createNamedNode(OSLCKTH('hasResourceShape'));
 
 let currentGraph;
 
-export var domainRenderer = new DomainRenderer('domain');
-export var resourceTypeRenderer = new ResourceTypeRenderer('resourceType', propsPropsGetter);
+export var domainRenderer = new DomainRenderer('domain', parser.rdf.prefixes);
+export var resourceTypeRenderer = new ResourceTypeRenderer('resourceType', propsPropsGetter, parser.rdf.prefixes);
 
 export function renderHtml() {
   renderHtmlPropsTable(currentGraph);
 }
 
+function getPrefix(uri) {
+  let shrinked = parser.rdf.prefixes.shrink(uri);
+  if (shrinked !== uri) {
+    console.log(uri.substring(0, shrinked.indexOf(':')) + ':');
+    return new RegExp(shrinked.substring(0, shrinked.indexOf(':')) + ':');
+  } else {
+    return new RegExp('');
+  }
+}
+
 function propsPropsGetter(resourceTypeUri) {
+  let prefix = getPrefix(resourceTypeUri);
   let resourceShapeUri = getOneObjectString(currentGraph, resourceTypeUri, OSLCKTH('hasResourceShape'));
-  return _.map(getPropsProps(currentGraph, resourceShapeUri, ['name', 'valueType', 'range']),
-      propProps => propProps[0] + ': ' + propProps[1] + (propProps[2] ? ' *' : ''));
+  return _.map(getPropsProps(currentGraph, resourceShapeUri, ['propertyDefinition', 'valueType', 'range']),
+      propProps => parser.rdf.prefixes.shrink(propProps[0]).replace(prefix, '') + ': ' + parser.rdf.prefixes.shrink(propProps[1]) + (propProps[2] ? ' *' : ''));
 }
 
 export function getRdfType(s) {
@@ -103,6 +114,7 @@ export function OSLCSchemaConnector(modelSetter) {
       });
       return currentGraph;
     }).then(function(graph) {
+      collectPrefixDefinitions(graph);
       let resourceShapeUriSet = {}; // collect all unique resourceShape URIs here
       // for each serviceProvider
       matchForEachTriple(graph, null, RDF('type'), OSLC('ServiceProvider'), function(serviceProviderUriTriple) {
@@ -156,11 +168,24 @@ export function OSLCSchemaConnector(modelSetter) {
     });
   }
 
+  function collectPrefixDefinitions(graph) {
+    matchForEachTriple(graph, null, RDF('type'), 'http://open-services.net/ns/core#PrefixDefinition', function(triple) {
+      let prefix = getOneObjectString(graph, triple.subject, OSLC('prefix'));
+      let prefixBase = getOneObjectString(graph, triple.subject, OSLC('prefixBase'));
+      parser.rdf.prefixes[prefix] = prefixBase;
+      console.log('prefix',prefix, prefixBase);
+    });
+  }
+
   // for any property oslc:range to nonexistent domain or resource type, create dummy resource type
   function createMissingResourceTypes(resourceShapeUriSet) {
     _.forEach(resourceShapeUriSet, function(resourceType, resourceShapeUri) {
       matchForEachTriple(currentGraph, resourceShapeUri, OSLC('property'), null, function(propertyUriTriple) {
         let propertyTriples = currentGraph.match(propertyUriTriple.object, null, null);
+
+        let propDef = getOneObjectString(propertyTriples, propertyUriTriple.object, OSLC('propertyDefinition'));
+        console.log('property def', propDef, parser.rdf.prefixes.shrink(propDef));
+
         let range = getOneObject(propertyTriples, propertyUriTriple.object, OSLC('range'));
         if (range) {
           createMissingResourceType(range.toString(), resourceShapeUriSet)

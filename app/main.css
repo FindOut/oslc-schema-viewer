@@ -1,17 +1,84 @@
-line {
-  stroke: black;
-}
-
-rect {
-  fill: #ffffff;
-  fill-opacity: 0.8;
-  stroke: black;
-}
-
 td.thead {
   background-color: #ddd;
 }
 
 td {
   background-color: #f8f8f8;
+}
+
+body  {
+  padding: 0;
+  margin: 0;
+}
+
+.toprow input {
+  margin: 0;
+  font-size: 80%;
+  width: 100%;
+}
+
+svg {
+  margin: 0;
+  background-color: #eeeeee;
+}
+
+.node {
+  fill: #ddd;
+  stroke: #999;
+}
+
+.node.resourceType {
+  fill: #f8f8f8;
+  stroke: #999;
+}
+
+.template-node {
+  fill: #dfd;
+  stroke: #999;
+}
+
+.worksheet > rect {
+  pointer-events: none;
+  fill: #f8f8f8;
+}
+
+text {
+  stroke: none;
+  font-family: Helvetica, Arial, Sans-serif;
+}
+
+text.props {
+  font-size: 90%;
+}
+
+.node.derived {
+  fill: #ff9;
+}
+
+.node.selected > rect {
+  stroke-width: 3px;
+  stroke: black;
+}
+
+.node.highlighted-target rect {
+  fill: #afa;
+}
+
+.node.moving {
+  fill-opacity: 0.5;
+}
+
+.delete-button circle {
+  fill: red;
+  stroke: none;
+}
+
+.delete-button path {
+  pointer-events: none;
+  stroke: white;
+  stroke-width: 3px;
+}
+
+.relation.selected {
+  stroke-width: 2px;
 }

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "extracts and displays schema of an oslc endpoint",
   "main": "getdata.js",
+  "scripts": {
+    "start": "opener http://localhost:3011 && node server.js"
+  },
+  "author": "dag.rende@find-out.se",
   "devDependencies": {
     "babel-core": "^6.7.7",
     "babel-loader": "^6.2.4",
@@ -20,11 +24,5 @@
     "lodash": "^4.11.1",
     "jquery": "^2.2.4",
     "promise": "^7.1.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "opener http://localhost:3011 && node server.js"
-  },
-  "author": "dag.rende@find-out.se",
-  "license": "ISC"
+  }
 }

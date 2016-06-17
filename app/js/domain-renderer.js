@@ -7,6 +7,8 @@ import {utils, vboxLayout} from './modeling/index';
 // if there is a text attribute, it is displayed centered in the box
 // nodeClass is used to type the rendered g elements
 function DomainRenderer(nodeClass, prefixes) {
+  var layout = vboxLayout();
+
   function render(parentElement, dataArray) {
     var defaultSize = {width: 50, height: 30};
     var nodes = parentElement.selectAll('.' + nodeClass)
@@ -21,11 +23,10 @@ function DomainRenderer(nodeClass, prefixes) {
               title
                 .attr('x', (size.width - title.node().getBBox().width) / 2)
                 .attr('y', 2);
-
             }
             return utils.defaultSizeSetter(node, size);
           };
-          this.layout = vboxLayout();
+          this.layout = layout;
           this.preferredSize = function() {
             var text = d3.select(this).select('text').node();
             var textBBox = text.getBBox();
@@ -50,7 +51,13 @@ function DomainRenderer(nodeClass, prefixes) {
     return nodes;
   }
 
-  return {render: render};
+  return {
+    render: render,
+    layout: function(newLayout) {
+      if (!newLayout) {return layout}
+      layout = newLayout;
+      return this;
+    }};
 }
 
 module.exports = DomainRenderer;

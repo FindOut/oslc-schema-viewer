@@ -2,7 +2,9 @@ var d3 = require('d3');
 var _ = require('lodash');
 var Promise = require('promise');
 var RdfXmlParser = require('rdf-parser-rdfxml');
-import {fetchGraph, matchForEachTriple, getOneObject, getOneObjectString, addTriple, renderHtmlPropsTable, getPropsProps} from './oslc-schema-utils'
+import {fetchGraph, matchForEachTriple, getOneObject, getOneObjectString, addTriple, renderHtmlPropsTable, getPropsProps} from './oslc-schema-utils';
+import {vboxLayout} from './modeling/index';
+
 import DomainRenderer from './domain-renderer';
 import ResourceTypeRenderer from './resource-type-renderer';
 
@@ -17,8 +19,8 @@ let schemaDomainType = parser.rdf.createNamedNode(OSLCKTH('hasResourceShape'));
 
 let currentGraph;
 
-export var domainRenderer = new DomainRenderer('domain', parser.rdf.prefixes);
-export var resourceTypeRenderer = new ResourceTypeRenderer('resourceType', propsPropsGetter, parser.rdf.prefixes);
+export var domainRenderer = new DomainRenderer('domain', parser.rdf.prefixes).layout(vboxLayout().margin(10));
+export var resourceTypeRenderer = new ResourceTypeRenderer('resourceType', propsPropsGetter, parser.rdf.prefixes, isDerived);
 
 export function renderHtml() {
   renderHtmlPropsTable(currentGraph);
@@ -27,7 +29,6 @@ export function renderHtml() {
 function getPrefix(uri) {
   let shrinked = parser.rdf.prefixes.shrink(uri);
   if (shrinked !== uri) {
-    console.log(uri.substring(0, shrinked.indexOf(':')) + ':');
     return new RegExp(shrinked.substring(0, shrinked.indexOf(':')) + ':');
   } else {
     return new RegExp('');
@@ -39,6 +40,11 @@ function propsPropsGetter(resourceTypeUri) {
   let resourceShapeUri = getOneObjectString(currentGraph, resourceTypeUri, OSLCKTH('hasResourceShape'));
   return _.map(getPropsProps(currentGraph, resourceShapeUri, ['propertyDefinition', 'valueType', 'range']),
       propProps => parser.rdf.prefixes.shrink(propProps[0]).replace(prefix, '') + ': ' + parser.rdf.prefixes.shrink(propProps[1]) + (propProps[2] ? ' *' : ''));
+}
+
+function isDerived(resourceTypeUri) {
+  console.log('isDerived(', resourceTypeUri, ')');
+  return getOneObject(currentGraph, resourceTypeUri, OSLCKTH('derived'));
 }
 
 export function getRdfType(s) {
@@ -121,6 +127,7 @@ export function OSLCSchemaConnector(modelSetter) {
         // for each service
         matchForEachTriple(graph, serviceProviderUriTriple.subject, OSLC('service'), null, function(serviceTriple) {
           let serviceDomain = getOneObject(graph, serviceTriple.object, OSLC('domain'));
+          console.log('serviceDomain', serviceDomain.toString());
           let serviceDomainHostname = parser.rdf.createNamedNode(new URL(serviceDomain ? serviceDomain.toString() : 'nodomain').origin);
 
           processService(OSLC('queryCapability'));
@@ -173,8 +180,8 @@ export function OSLCSchemaConnector(modelSetter) {
       let prefix = getOneObjectString(graph, triple.subject, OSLC('prefix'));
       let prefixBase = getOneObjectString(graph, triple.subject, OSLC('prefixBase'));
       parser.rdf.prefixes[prefix] = prefixBase;
-      console.log('prefix',prefix, prefixBase);
     });
+    _.forEach(parser.rdf.prefixes, (v, k) => console.log(k, v));
   }
 
   // for any property oslc:range to nonexistent domain or resource type, create dummy resource type
@@ -184,7 +191,6 @@ export function OSLCSchemaConnector(modelSetter) {
         let propertyTriples = currentGraph.match(propertyUriTriple.object, null, null);
 
         let propDef = getOneObjectString(propertyTriples, propertyUriTriple.object, OSLC('propertyDefinition'));
-        console.log('property def', propDef, parser.rdf.prefixes.shrink(propDef));
 
         let range = getOneObject(propertyTriples, propertyUriTriple.object, OSLC('range'));
         if (range) {
@@ -201,16 +207,18 @@ export function OSLCSchemaConnector(modelSetter) {
       // find domain
       if (currentGraph.match(newDomain, RDF('type'), OSLCKTH('SchemaDomain')).length == 0) {
         // domain doesn't exist - create it
-        console.log('create domain', newDomain);
         addTriple(currentGraph, newDomain, RDF('type'), OSLCKTH('SchemaDomain'));
+        // mark it as derived
+        addTriple(currentGraph, newDomain, OSLCKTH('derived'), newResourceTypeUri);
       }
 
       // find newResourceType
       if (currentGraph.match(newResourceTypeUri, RDF('type'), OSLCKTH('SchemaResourceType')).length == 0) {
-        console.log('create resource type', newResourceTypeUri);
         // newResourceType not found - create newResourceType
         addTriple(currentGraph, newDomain, OSLCKTH('hasResourceType'), newResourceTypeUri);
         addTriple(currentGraph, newResourceTypeUri, RDF('type'), OSLCKTH('SchemaResourceType'));
+        // mark it as derived
+        addTriple(currentGraph, newResourceTypeUri, OSLCKTH('derived'), newResourceTypeUri);
 
         // create shape
         addTriple(currentGraph, newResourceTypeUri, OSLCKTH('hasResourceShape'), shapeUri);

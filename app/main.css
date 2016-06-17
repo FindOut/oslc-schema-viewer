@@ -51,6 +51,10 @@ text.props {
   font-size: 90%;
 }
 
+.node.derived {
+  fill: #ff9;
+}
+
 .node.selected > rect {
   stroke-width: 3px;
   stroke: black;

@@ -6,13 +6,14 @@ import {utils, vboxLayout} from './modeling/index';
 // Assumes each data item has an id attribute.
 // if there is a text attribute, it is displayed centered in the box
 // nodeClass is used to type the rendered g elements
-function ResourceTypeRenderer(nodeClass, propsPropsGetter, prefixes) {
+function ResourceTypeRenderer(nodeClass, propsPropsGetter, prefixes, isDerived) {
   function render(parentElement, resourceTypeUris) {
     var defaultSize = {width: 50, height: 30};
     var nodes = parentElement.selectAll('.' + nodeClass)
       .data(resourceTypeUris, d => d);
     var nodesEnter = nodes.enter().append('g')
         .attr('class', 'node ' + nodeClass)
+        .classed('derived', isDerived)
         .attr('id', d => 'node_' + d)
         .each(function(d) {
           this.size = function(node, size) {

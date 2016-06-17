@@ -118,7 +118,9 @@ export function fetchGraph(url, tripleMap) {
 export function fetchXml(url) {
   // console.log('fetchXml', url);
   return new Promise(function(fulfill, reject) {
-    d3.xml('http://localhost:3011/proxy?url=' + encodeURIComponent(url), function(error, doc) {
+    d3.xml('http://localhost:3011/proxy?url=' + encodeURIComponent(url))
+    .header('Accept', 'application/rdf+xml')
+    .get(function(error, doc) {
       if (error) {
         // console.log('fetchXml error', error);
         reject(error);

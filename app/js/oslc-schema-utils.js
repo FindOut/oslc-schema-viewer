@@ -6,7 +6,8 @@ let OSLC = suffix => 'http://open-services.net/ns/core#' + suffix;
 let RDF = suffix => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#' + suffix;
 let OSLCKTH = suffix => 'http://oslc.kth.se/core#' + suffix;
 
-var parser = new RdfXmlParser();
+let parser = new RdfXmlParser();
+let xmlParser = new DOMParser();
 let hasResourceTypePredicate = parser.rdf.createNamedNode('http://oslc.kth.se/core#hasResourceType');
 let hasResourceShapePredicate = parser.rdf.createNamedNode('http://oslc.kth.se/core#hasResourceShape');
 
@@ -118,15 +119,16 @@ export function fetchGraph(url, tripleMap) {
 export function fetchXml(url) {
   // console.log('fetchXml', url);
   return new Promise(function(fulfill, reject) {
-    d3.xml('http://localhost:3011/proxy?url=' + encodeURIComponent(url))
+    d3.xhr('http://localhost:3011/proxy?url=' + encodeURIComponent(url))
     .header('Accept', 'application/rdf+xml')
-    .get(function(error, doc) {
+    .get(function(error, xhr) {
       if (error) {
-        // console.log('fetchXml error', error);
+        console.log('fetchXml error', error);
         reject(error);
       } else {
-        // console.log('fetchXml document', doc);
-        fulfill(doc);
+        console.log('fetchXml xhr', xhr);
+        let xmlDoc = xmlParser.parseFromString(xhr.responseText, 'text/xml');
+        fulfill(xmlDoc);
       }
     });
   });

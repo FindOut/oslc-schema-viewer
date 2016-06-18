@@ -18,15 +18,13 @@ Parts relevant for this application.
 ## Metadata Retrieval Algorithm
 
 - get the catalog
-    - iterate over each service provider in it
+    - for each service provider
         - for each service
             - for each QueryCapability and CreationFactory
                 - get the resourceShape - save it
                     - for each property in it
                         - find out resource type by type of any found resource
-                        - find out reference property target type by
-                          1. oslc:range
-                          1. type of target resource in instance
+                        - find out reference property target type by oslc:range
 
 ## Set up development environment
 
@@ -46,15 +44,5 @@ npm install
 npm start
 ```
 The last command starts a proxy server and opens a web browser that after some seconds will show the Domain Specification View for the offis bugzilla OSLC catalog.
-
-Currently, an OSLC site that requires authentication requires a username/password in a configuration file. The file local.config.json is automatically created by the proxy server, if missing. So at first start, edit the file and restart the server. The file has the followin contents:
-
-```
-{
- "auth": {
-   "user": "your_username",
-   "password": "your_password"}
-}
-```
 
 If you dont have the git command line installed, you may download the code as a zip from the github web ui.

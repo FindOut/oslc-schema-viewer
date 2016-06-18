@@ -43,7 +43,6 @@ function propsPropsGetter(resourceTypeUri) {
 }
 
 function isDerived(resourceTypeUri) {
-  console.log('isDerived(', resourceTypeUri, ')');
   return getOneObject(currentGraph, resourceTypeUri, OSLCKTH('derived'));
 }
 
@@ -77,7 +76,7 @@ export function getOSLCSchemaChildren(parentData) {
     }
   } else {
     // return list of domains
-    return _.uniq(_.map(currentGraph.match(null, 'http://oslc.kth.se/core#hasResourceType', null).toArray(), t => t.subject.toString()));
+    return _.uniq(_.map(currentGraph.match(null, OSLCKTH('hasResourceType'), null).toArray(), t => t.subject.toString()));
   }
 }
 
@@ -108,26 +107,26 @@ export function getRelations(parentData) {
 export function OSLCSchemaConnector(modelSetter) {
   var listeners = [];
 
-  function open(catalogUrl) {
+  function open(catalogUrls) {
     fireEvent('read-begin');
 
     // fetch catalog
-    Promise.all(_.map(catalogUrl.split(','), url => fetchGraph(url.trim())))
+    Promise.all(_.map(catalogUrls.split(','), url => fetchGraph(url.trim())))
     .then(function(catalogGraphs) {
-      currentGraph = parser.rdf.createGraph();
-      _.forEach(catalogGraphs, function(graph) {
-        currentGraph.addAll(graph.toArray());
+      let graph = parser.rdf.createGraph();
+      _.forEach(catalogGraphs, function(catalogGraph) {
+        graph.addAll(catalogGraph.toArray());
       });
-      return currentGraph;
-    }).then(function(graph) {
+
       collectPrefixDefinitions(graph);
       let resourceShapeUriSet = {}; // collect all unique resourceShape URIs here
+      let domains = {};
+
       // for each serviceProvider
       matchForEachTriple(graph, null, RDF('type'), OSLC('ServiceProvider'), function(serviceProviderUriTriple) {
         // for each service
         matchForEachTriple(graph, serviceProviderUriTriple.subject, OSLC('service'), null, function(serviceTriple) {
           let serviceDomain = getOneObject(graph, serviceTriple.object, OSLC('domain'));
-          console.log('serviceDomain', serviceDomain.toString());
           let serviceDomainHostname = parser.rdf.createNamedNode(new URL(serviceDomain ? serviceDomain.toString() : 'nodomain').origin);
 
           processService(OSLC('queryCapability'));
@@ -151,6 +150,7 @@ export function OSLCSchemaConnector(modelSetter) {
         });
       });
 
+
       // fetch all resourceShape resources
       Promise.all(_.map(resourceShapeUriSet, function(resourceType, resourceShapeUri) {
         return fetchGraph(resourceShapeUri).then(function(resourceShapeGraph) {
@@ -163,9 +163,10 @@ export function OSLCSchemaConnector(modelSetter) {
           return resourceShapeUri;
         })
       })).done(function(resourceShapeUris) {
-        createMissingResourceTypes(resourceShapeUriSet);
+        createMissingResourceTypes(graph, resourceShapeUriSet);
 
-        modelSetter(currentGraph);
+        currentGraph = graph;
+        modelSetter(graph);
         fireEvent('read-end');
       })
       .catch(function(error) {
@@ -185,43 +186,43 @@ export function OSLCSchemaConnector(modelSetter) {
   }
 
   // for any property oslc:range to nonexistent domain or resource type, create dummy resource type
-  function createMissingResourceTypes(resourceShapeUriSet) {
+  function createMissingResourceTypes(graph, resourceShapeUriSet) {
     _.forEach(resourceShapeUriSet, function(resourceType, resourceShapeUri) {
-      matchForEachTriple(currentGraph, resourceShapeUri, OSLC('property'), null, function(propertyUriTriple) {
-        let propertyTriples = currentGraph.match(propertyUriTriple.object, null, null);
+      matchForEachTriple(graph, resourceShapeUri, OSLC('property'), null, function(propertyUriTriple) {
+        let propertyTriples = graph.match(propertyUriTriple.object, null, null);
 
         let propDef = getOneObjectString(propertyTriples, propertyUriTriple.object, OSLC('propertyDefinition'));
 
         let range = getOneObject(propertyTriples, propertyUriTriple.object, OSLC('range'));
         if (range) {
-          createMissingResourceType(range.toString(), resourceShapeUriSet)
+          createMissingResourceType(graph, range.toString(), resourceShapeUriSet)
         }
       });
     });
   }
 
-  function createMissingResourceType(newResourceTypeUri, resourceShapeUriSet) {
+  function createMissingResourceType(graph, newResourceTypeUri, resourceShapeUriSet) {
     if (!resourceShapeUriSet[newResourceTypeUri]) {
       let shapeUri = parser.rdf.createBlankNode();
       let newDomain = new URL(newResourceTypeUri).origin
       // find domain
-      if (currentGraph.match(newDomain, RDF('type'), OSLCKTH('SchemaDomain')).length == 0) {
+      if (graph.match(newDomain, RDF('type'), OSLCKTH('SchemaDomain')).length == 0) {
         // domain doesn't exist - create it
-        addTriple(currentGraph, newDomain, RDF('type'), OSLCKTH('SchemaDomain'));
+        addTriple(graph, newDomain, RDF('type'), OSLCKTH('SchemaDomain'));
         // mark it as derived
-        addTriple(currentGraph, newDomain, OSLCKTH('derived'), newResourceTypeUri);
+        addTriple(graph, newDomain, OSLCKTH('derived'), newResourceTypeUri);
       }
 
       // find newResourceType
-      if (currentGraph.match(newResourceTypeUri, RDF('type'), OSLCKTH('SchemaResourceType')).length == 0) {
+      if (graph.match(newResourceTypeUri, RDF('type'), OSLCKTH('SchemaResourceType')).length == 0) {
         // newResourceType not found - create newResourceType
-        addTriple(currentGraph, newDomain, OSLCKTH('hasResourceType'), newResourceTypeUri);
-        addTriple(currentGraph, newResourceTypeUri, RDF('type'), OSLCKTH('SchemaResourceType'));
+        addTriple(graph, newDomain, OSLCKTH('hasResourceType'), newResourceTypeUri);
+        addTriple(graph, newResourceTypeUri, RDF('type'), OSLCKTH('SchemaResourceType'));
         // mark it as derived
-        addTriple(currentGraph, newResourceTypeUri, OSLCKTH('derived'), newResourceTypeUri);
+        addTriple(graph, newResourceTypeUri, OSLCKTH('derived'), newResourceTypeUri);
 
         // create shape
-        addTriple(currentGraph, newResourceTypeUri, OSLCKTH('hasResourceShape'), shapeUri);
+        addTriple(graph, newResourceTypeUri, OSLCKTH('hasResourceShape'), shapeUri);
         resourceShapeUriSet[newResourceTypeUri] = shapeUri;
       }
     }

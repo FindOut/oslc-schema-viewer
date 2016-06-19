@@ -100,8 +100,10 @@ function propsPropsGetter(resourceTypeUri) {
   let resourceShapeUri = getOneObjectString(currentGraph, resourceTypeUri, OSLCKTH('hasResourceShape'));
   let propsProps = getPropsProps(currentGraph, resourceShapeUri, ['propertyDefinition', 'valueType', 'range']);
   let rangeLessPropsProps = _.filter(propsProps, prop => !prop[2]);
-  return _.map(rangeLessPropsProps,
-      propProps => parser.rdf.prefixes.shrink(propProps[0]).replace(prefixRegExp, '') + ': ' + parser.rdf.prefixes.shrink(propProps[1]) + (propProps[2] ? ' *' : ''));
+  let propsTexts = _.map(rangeLessPropsProps,
+      propProps => parser.rdf.prefixes.shrink(propProps[0]).replace(prefixRegExp, '')
+          + ': ' + parser.rdf.prefixes.shrink(propProps[1]));
+  return propsTexts.sort();
 }
 
 function domainNameInfoGetter(dn) {

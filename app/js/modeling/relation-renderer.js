@@ -5,6 +5,7 @@ import utils from './utils.js';
 // layout the single relationNode, by placing its ends
 function defaultRelationLayout(relationNode) {
   var svgSel = d3.select(utils.getParentSvgElement(relationNode.node()));
+  svgSel.attr('xmlns:xlink', 'http://www.w3.org/1999/xlink')
 
   var relation = relationNode.datum();
   var fromNodeId = 'node_' + relation.from;
@@ -30,21 +31,25 @@ function defaultRelationLayout(relationNode) {
 
       relationNode.selectAll('path')
         .attr('d', `M ${fromPoint.x},${fromPoint.y} L${toPoint.x},${toPoint.y}`);
-
     } else {
       // self reference - draw a small loop from fromNode to itself
-      let x = fromRect.x + fromRect.width, y = fromRect.y + fromRect.height / 2, w = 10;
+      let x = fromRect.x + fromRect.width, y = fromRect.y + fromRect.height / 2, w = 20, out = 10;
+      let pathExpr = `M ${x},${y - w} L ${x + out},${y - w} A ${w},${w} 0 1,1 ${x + out},${y + w} L ${x},${y + w}`;
+      console.log('pathExpr', pathExpr);
       relationNode.selectAll('path')
-        .attr('d', `M ${x},${y - w} L${x + 2 * w},${y - w} L${x + 2 * w},${y + w} L${x},${y + w}`);
+      // .attr('d', `M ${x},${y - w} L${x + 2 * w},${y - w} L${x + 2 * w},${y + w} L${x},${y + w}`);
+      .attr('d', pathExpr);
     }
   }
 }
 
 // returns object with render function
-function RelationRenderer(relationClass) {
+// relationClass is the class for the created relation elements
+// labelGetter is a function(d) that returns a string displayed on the line
+function RelationRenderer(relationClass, labelGetter) {
   var layout = defaultRelationLayout;
-  // define arrow-head marker
   function render(parentEl, relations) {
+    // define arrow-head marker
     var svgSel = d3.select(utils.getParentSvgElement(parentEl.node()));
     var defs = svgSel.selectAll('defs').data(['dummy']);
     defs.enter().append('defs').append('marker')
@@ -61,31 +66,48 @@ function RelationRenderer(relationClass) {
 
     var svgZeroPoint = svgSel.node().createSVGPoint();
 
+    let getId = d => d.from.toString() + '-' + d.to.toString();
+
     var relation = svgSel.selectAll('.' + relationClass)
-        .data(relations, d => d.from.toString() + '-' + d.to.toString());
+        .data(relations, getId);
     var relationEnter = relation.enter().append('g')
       .attr("class", relationClass)
       .each(function(d) {this.layout = layout});
     relationEnter.append("path")
-      .attr("d", '')
-      .attr('class', relationClass + '-line');
+      .attr('id', d => 'path_' + getId(d))
+      .attr(
+        {'class': relationClass + '-line',
+        d: ''});
     relation.select('.' + relationClass + '-line')
-        .attr('marker-end', 'url(#markerArrowEnd)')
-        .attr('stroke', 'black')
-        .attr('fill', 'none');
+        .attr({'marker-end': 'url(#markerArrowEnd)',
+          'stroke': 'black',
+          'fill': 'none'});
     relationEnter.append('path')
       .attr('class', relationClass + '-line-shadow');
     relation.select('.' + relationClass + '-line-shadow')
-        .attr('stroke', '#ffffff')
-        .attr('stroke-width', 10)
-        .attr('stroke-opacity', 0.01)
-        .attr('fill', 'none');
+        .attr({'stroke': '#ffffff',
+        'stroke-width': 10,
+        'stroke-opacity': 0.01,
+        'fill': 'none'});
+    if (labelGetter) {
+      relationEnter
+        .append('text')
+        // .attr("x", -10)
+        .attr("dy", '-.1em')
+        .attr('font-size', '70%')
+        .append('textPath')
+        .style("text-anchor","middle")
+        .attr("startOffset", "50%")
+        .attr('xlink:href', d => '#path_' + getId(d))
+        .text(labelGetter);
+    }
     relation.exit().remove();
 
     return relation;
   }
 
-  var renderer = {render: render,
+  var renderer = {
+    render: render,
     layout: layoutSetterGetter};
 
   function layoutSetterGetter(newLayout) {

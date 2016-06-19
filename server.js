@@ -7,6 +7,7 @@ var http = require('request');
 var fs = require('fs');
 
 var port = 3011;
+var useCache = false;
 
 var app = express();
 app.use(webpackDevMiddleware(webpack(config), {}));
@@ -16,7 +17,6 @@ app.get('/proxy', function (request, response) {
   response.header('Cache-Control', 'no-cache, no-store, must-revalidate');
   response.header('Pragma', 'no-cache');
   response.header('Expires', '0');
-  var useCache = false;
   if (useCache) {
     response.header('Content-Type', 'application/xml');
     response.send(getFromCache(request.query.url));

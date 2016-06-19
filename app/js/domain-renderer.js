@@ -6,7 +6,7 @@ import {utils, vboxLayout} from './modeling/index';
 // Assumes each data item has an id attribute.
 // if there is a text attribute, it is displayed centered in the box
 // nodeClass is used to type the rendered g elements
-function DomainRenderer(nodeClass, prefixes) {
+function DomainRenderer(nodeClass, domainNameInfoGetter) {
   var layout = vboxLayout();
 
   function render(parentElement, dataArray) {
@@ -41,7 +41,7 @@ function DomainRenderer(nodeClass, prefixes) {
     nodes.exit().remove();
 
     var nodeRows = nodes.select('text').selectAll('tspan')
-      .data(d => [d]);
+      .data(d => [domainNameInfoGetter(d).name]);
     nodeRows.enter().append('tspan')
       .attr('x', '.1em').attr('dy', '.9em');
     nodeRows.text(d => d);

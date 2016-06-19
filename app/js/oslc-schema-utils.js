@@ -194,11 +194,6 @@ export function getPropsProps(graph, resourceShapeUri, propPropNames) {
     let propertyTriples = graph.match(propertyUriTriple.object, null, null);
     result.push(_.map(propPropNames,
       key=>getOneObjectString(propertyTriples, propertyUriTriple.object, OSLC(key))
-      // .replace('http://open-services.net/ns/core#', 'oslc:')
-      // .replace('http://open-services.net/ns/cm#', 'cm:')
-      // .replace('http://purl.org/dc/terms/', 'purl:')
-      // .replace('http://www.w3.org/2001/XMLSchema#', 'xsd:')
-      // .replace('http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'rdf:')
     ));
   });
   return result;

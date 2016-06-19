@@ -7,7 +7,7 @@ var http = require('request');
 var fs = require('fs');
 
 var port = 3011;
-var useCache = true;
+var useCache = false;
 
 var app = express();
 app.use(webpackDevMiddleware(webpack(config), {}));

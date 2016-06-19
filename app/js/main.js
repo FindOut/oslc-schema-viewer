@@ -1,9 +1,9 @@
 import d3 from 'd3';
 import {
-  SvgRenderer, DiagramWorksheetRenderer, RelationRenderer, hboxLayout, vboxLayout, renderHierarchy, Manipulator,
+  SvgRenderer, DiagramWorksheetRenderer, hboxLayout, vboxLayout, renderHierarchy, Manipulator,
   DeleteNodeTool, MoveNodeTool, MoveDuplicateNodeTool, CreateRelationTool, SelectTool, utils
 } from './modeling/index';
-import {OSLCSchemaConnector, getOSLCSchemaChildren, getOSLCSchemaRenderer, getRdfType, renderHtml, getRelations} from './oslc-schema-connector.js';
+import {OSLCSchemaConnector, getOSLCSchemaChildren, getOSLCSchemaRenderer, getRelations, getRelationRenderer, getRdfType, renderHtml} from './oslc-schema-connector.js';
 
 // var connector = new HttpConnector(d => {model = d});
 var connector = new OSLCSchemaConnector(d => {model = d});
@@ -24,11 +24,6 @@ if (false) {
 
   var svgRenderer = new SvgRenderer(model, d3.select('#graph'));
   var diagramWorksheetRenderer = new DiagramWorksheetRenderer('worksheet').layout(hboxLayout().margin(10));
-  var relationRenderer = new RelationRenderer('relation');
-
-  function getRelationRenderer(d) {
-    return {'relation': relationRenderer.render}[d.type];
-  }
 
   var renderModel = function() {
     diagramWorksheetRenderer.render(d3.select('#graph svg'), [{id: 'ws'}]);

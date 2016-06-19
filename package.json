@@ -4,7 +4,8 @@
   "description": "extracts and displays schema of an oslc endpoint",
   "main": "getdata.js",
   "scripts": {
-    "start": "opener http://localhost:3011 && node server.js"
+    "start": "opener http://localhost:3011 && node server.js",
+    "dev": "opener http://localhost:3011 && nodemon --watch server.js server.js"
   },
   "author": "dag.rende@find-out.se",
   "devDependencies": {

@@ -58,7 +58,7 @@ function ResourceTypeRenderer(nodeClass, propsPropsGetter, prefixes, isDerived) 
       .data(d => [d]);
     nodeRows.enter().append('tspan')
       .attr({x: '.5em', dy: '.9em'});
-    nodeRows.text(d => prefixes.shrink(d));
+    nodeRows.text(d => prefixes.shrink(d).replace(/.*:/, ''));
     nodeRows.attr('fill', 'black');
     nodeRows.exit().remove();
 

@@ -2,7 +2,7 @@ var d3 = require('d3');
 var _ = require('lodash');
 var Promise = require('promise');
 var RdfXmlParser = require('rdf-parser-rdfxml');
-import {fetchGraph, matchForEachTriple, getOneObject, getOneObjectString, addTriple, renderHtmlPropsTable, getPropsProps} from './oslc-schema-utils';
+import {fetchGraph, matchForEachTriple, getOneObject, getOneObjectString, addTriple, renderHtmlPropsTable, getPropsProps, graphToString} from './oslc-schema-utils';
 import {vboxLayout} from './modeling/index';
 
 import DomainRenderer from './domain-renderer';
@@ -19,27 +19,45 @@ let schemaDomainType = parser.rdf.createNamedNode(OSLCKTH('hasResourceShape'));
 
 let currentGraph;
 
-export var domainRenderer = new DomainRenderer('domain', parser.rdf.prefixes).layout(vboxLayout().margin(10));
+export var domainRenderer = new DomainRenderer('domain', domainNameInfoGetter).layout(vboxLayout().margin(10));
 export var resourceTypeRenderer = new ResourceTypeRenderer('resourceType', propsPropsGetter, parser.rdf.prefixes, isDerived);
 
 export function renderHtml() {
   renderHtmlPropsTable(currentGraph);
 }
 
-function getPrefix(uri) {
-  let shrinked = parser.rdf.prefixes.shrink(uri);
+function getPrefix(uri, defaultValue) {
+  let shrinked = parser.rdf.prefixes.shrink(uri.toString());
   if (shrinked !== uri) {
-    return new RegExp(shrinked.substring(0, shrinked.indexOf(':')) + ':');
+    return shrinked.substring(0, shrinked.indexOf(':'));
+  } else {
+    return defaultValue;
+  }
+}
+
+function getPrefixRegExp(uri) {
+  let prefix = getPrefix(uri);
+  if (prefix) {
+    return new RegExp(prefix + ':');
   } else {
     return new RegExp('');
   }
 }
 
 function propsPropsGetter(resourceTypeUri) {
-  let prefix = getPrefix(resourceTypeUri);
+  let prefixRegExp = getPrefixRegExp(resourceTypeUri);
+  console.log('prefixRegExp', prefixRegExp,resourceTypeUri);
   let resourceShapeUri = getOneObjectString(currentGraph, resourceTypeUri, OSLCKTH('hasResourceShape'));
   return _.map(getPropsProps(currentGraph, resourceShapeUri, ['propertyDefinition', 'valueType', 'range']),
-      propProps => parser.rdf.prefixes.shrink(propProps[0]).replace(prefix, '') + ': ' + parser.rdf.prefixes.shrink(propProps[1]) + (propProps[2] ? ' *' : ''));
+      propProps => parser.rdf.prefixes.shrink(propProps[0]).replace(prefixRegExp, '') + ': ' + parser.rdf.prefixes.shrink(propProps[1]) + (propProps[2] ? ' *' : ''));
+}
+
+function domainNameInfoGetter(dn) {
+  let prefix = getOneObjectString(currentGraph, dn, OSLCKTH('prefix'));
+  return {
+    name: prefix,
+    domain: parser.rdf.prefixes[prefix]
+  }
 }
 
 function isDerived(resourceTypeUri) {
@@ -48,7 +66,7 @@ function isDerived(resourceTypeUri) {
 
 export function getRdfType(s) {
   let typeTriples = currentGraph.match(s, RDF('type'), null);
-  if (typeTriples.length) {
+  if (typeTriples.length > 0) {
     return typeTriples.toArray()[0].object.toString();
   } else {
     return undefined;
@@ -69,15 +87,23 @@ export function getOSLCSchemaChildren(parentData) {
   if (parentData) {
     let type = getRdfType(parentData);
     if (type == OSLCKTH('SchemaDomain')) {
-      let resourceTypeTriples = currentGraph.match(parentData, OSLCKTH('hasResourceType'), null);
-      return _.uniq(_.map(resourceTypeTriples.toArray(), t => t.object.toString()));
+      let resourceTypeTriples = currentGraph.match(null, OSLCKTH('hasSchemaDomain'), parentData);
+      return _.uniq(_.map(resourceTypeTriples.toArray(), t => t.subject.toString()));
     } else {
       return [];
     }
   } else {
     // return list of domains
-    return _.uniq(_.map(currentGraph.match(null, OSLCKTH('hasResourceType'), null).toArray(), t => t.subject.toString()));
+    return getUniqeDomainNames();
   }
+}
+
+function getUniqeDomainNames() {
+  let nameSet = {};
+  matchForEachTriple(currentGraph, null, OSLCKTH('hasSchemaDomain'), null, function(triple) {
+    nameSet[triple.object.toString()] = triple.object;
+  });
+  return _.map(nameSet, (v, k) => v);
 }
 
 // returns all relations as a list of {type: 'relation', from: sourceResourceTypeUri, to: targetResourceTypeUri}
@@ -126,9 +152,6 @@ export function OSLCSchemaConnector(modelSetter) {
       matchForEachTriple(graph, null, RDF('type'), OSLC('ServiceProvider'), function(serviceProviderUriTriple) {
         // for each service
         matchForEachTriple(graph, serviceProviderUriTriple.subject, OSLC('service'), null, function(serviceTriple) {
-          let serviceDomain = getOneObject(graph, serviceTriple.object, OSLC('domain'));
-          let serviceDomainHostname = parser.rdf.createNamedNode(new URL(serviceDomain ? serviceDomain.toString() : 'nodomain').origin);
-
           processService(OSLC('queryCapability'));
           processService(OSLC('creationFactory'));
 
@@ -136,10 +159,7 @@ export function OSLCSchemaConnector(modelSetter) {
             matchForEachTriple(graph, serviceTriple.object, handler, null, function(handlerTriple) {
               let resourceType = getOneObject(graph, handlerTriple.object, OSLC('resourceType'));
               // add domain to resource type relation to simplify grouping by domain
-              addTriple(graph, serviceDomainHostname, OSLCKTH('hasResourceType'), resourceType);
-              // mar domain with type
-              addTriple(graph, serviceDomainHostname, RDF('type'), OSLCKTH('SchemaDomain'));
-
+              addTriple(graph, resourceType, OSLCKTH('hasSchemaDomain'), getSchemaDomainNode(graph, resourceType, false));
               // collect and map all unique resource shapes to resourceType
               matchForEachTriple(graph, handlerTriple.object, OSLC('resourceShape'), null, function(resourceShapeUriTriple) {
                 let resourceTypeString = resourceType || 'no resource type';
@@ -149,8 +169,6 @@ export function OSLCSchemaConnector(modelSetter) {
           }
         });
       });
-
-
       // fetch all resourceShape resources
       Promise.all(_.map(resourceShapeUriSet, function(resourceType, resourceShapeUri) {
         return fetchGraph(resourceShapeUri).then(function(resourceShapeGraph) {
@@ -174,6 +192,24 @@ export function OSLCSchemaConnector(modelSetter) {
         fireEvent('read-end');
       });
     });
+  }
+
+  // returns the schema domain node for the resourceType prefix (creates it if missing)
+  function getSchemaDomainNode(graph, resourceType, derived) {
+    let prefix = getPrefix(resourceType);
+    let prefixDomainNode = graph.match(null, OSLCKTH('prefix'), prefix);
+    if (prefixDomainNode.length > 0) {
+      return prefixDomainNode.toArray()[0].subject;
+    } else {
+      let schemaDomain = parser.rdf.createBlankNode()
+      addTriple(graph, schemaDomain, RDF('type'), OSLCKTH('SchemaDomain'));
+      addTriple(graph, schemaDomain, OSLCKTH('prefix'), prefix);
+      if (derived) {
+        // mark it as derived
+        addTriple(graph, schemaDomain, OSLCKTH('derived'), resourceType);
+      }
+      return schemaDomain;
+    }
   }
 
   function collectPrefixDefinitions(graph) {
@@ -204,19 +240,11 @@ export function OSLCSchemaConnector(modelSetter) {
   function createMissingResourceType(graph, newResourceTypeUri, resourceShapeUriSet) {
     if (!resourceShapeUriSet[newResourceTypeUri]) {
       let shapeUri = parser.rdf.createBlankNode();
-      let newDomain = new URL(newResourceTypeUri).origin
-      // find domain
-      if (graph.match(newDomain, RDF('type'), OSLCKTH('SchemaDomain')).length == 0) {
-        // domain doesn't exist - create it
-        addTriple(graph, newDomain, RDF('type'), OSLCKTH('SchemaDomain'));
-        // mark it as derived
-        addTriple(graph, newDomain, OSLCKTH('derived'), newResourceTypeUri);
-      }
+      addTriple(graph, newResourceTypeUri, OSLCKTH('hasSchemaDomain'), getSchemaDomainNode(graph, newResourceTypeUri, true));
 
       // find newResourceType
       if (graph.match(newResourceTypeUri, RDF('type'), OSLCKTH('SchemaResourceType')).length == 0) {
         // newResourceType not found - create newResourceType
-        addTriple(graph, newDomain, OSLCKTH('hasResourceType'), newResourceTypeUri);
         addTriple(graph, newResourceTypeUri, RDF('type'), OSLCKTH('SchemaResourceType'));
         // mark it as derived
         addTriple(graph, newResourceTypeUri, OSLCKTH('derived'), newResourceTypeUri);

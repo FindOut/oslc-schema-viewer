@@ -85,7 +85,6 @@ function makeNameNodeIfString(s) {
 export function addTriple(graph, subject, predicate, object) {
   if (subject && predicate && object && graph.match(subject, predicate, object).length == 0) {
     let triple = parser.rdf.createTriple(makeNameNodeIfString(subject), makeNameNodeIfString(predicate), makeNameNodeIfString(object));
-    // console.log('addTriple(' + tripleToString(triple) + ')');
     graph.add(triple);
   }
 }
@@ -117,16 +116,13 @@ export function fetchGraph(url, tripleMap) {
 }
 
 export function fetchXml(url) {
-  // console.log('fetchXml', url);
   return new Promise(function(fulfill, reject) {
     d3.xhr('http://localhost:3011/proxy?url=' + encodeURIComponent(url))
     .header('Accept', 'application/rdf+xml')
     .get(function(error, xhr) {
       if (error) {
-        console.log('fetchXml error', error);
         reject(error);
       } else {
-        console.log('fetchXml xhr', xhr);
         let xmlDoc = xmlParser.parseFromString(xhr.responseText, 'text/xml');
         fulfill(xmlDoc);
       }

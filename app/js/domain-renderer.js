@@ -38,6 +38,7 @@ function DomainRenderer(nodeClass, domainNameInfoGetter) {
     nodesEnter.append('rect')
           .attr(defaultSize);
     nodesEnter.append('text').attr('class', 'title');
+    nodesEnter.append('title').text(d=>domainNameInfoGetter(d).domain);
     nodes.exit().remove();
 
     var nodeRows = nodes.select('text').selectAll('tspan')

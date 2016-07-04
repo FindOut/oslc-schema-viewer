@@ -51,6 +51,7 @@ function ResourceTypeRenderer(nodeClass, propsPropsGetter, prefixes, isDerived) 
       .attr('class', 'title');
     nodesEnter.append('text')
       .attr('class', 'props');
+    nodesEnter.append('title').text(d=>d);
     nodes.exit().remove();
 
     // render title

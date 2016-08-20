@@ -43,6 +43,7 @@ svg {
 }
 
 text {
+  fill: black;
   stroke: none;
   font-family: Helvetica, Arial, Sans-serif;
 }

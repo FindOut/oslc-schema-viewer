@@ -1,7 +1,9 @@
-import utils from './utils';
+import * as utils from './utils';
+
+import * as d3 from './d3';
 
 // node moving tool
-module.exports = function() {
+export function DeleteNodeTool() {
   var dispatch = d3.dispatch('delete');
   var button = null;
   function addDeleteButton(parent) {
@@ -20,21 +22,29 @@ module.exports = function() {
     button = null;
   }
   var tool = {
+    onDragStart: function(m) {
+      // if a drag is starting - remove button
+      removeDeleteButton();
+      return false;
+    },
     onEnter: function(m) {
-      console.log('enter',m.d);
-      addDeleteButton(this);
+      if (!m.isDrag) {
+        addDeleteButton(this);
+      }
     },
     onLeave: function(m) {
-      console.log('leave',m.d);
       removeDeleteButton();
     },
     onOver: (m) => {
+      if (m.isDrag) {
+        removeDeleteButton();
+      }
       return false;
     },
     onClick: (m) => {
       if (button && d3.event.sourceEvent.target === button.select('circle').node()) {
         // delete button clicked - tell client and tell Manipulator that click is taken
-        dispatch.delete(m.startD);
+        dispatch.call('delete', null, m.startD);
         return true;
       }
     },

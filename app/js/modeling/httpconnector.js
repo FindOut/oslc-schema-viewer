@@ -1,25 +1,27 @@
 import $ from 'jquery';
 import _ from 'lodash';
 
-// reads resourceUrl and sets model
-// informs listeners about events by calling with parameter:
+// reads resourceUrl and informs event listener with result or error message
+// Event types and parameters are:
 //  'read-begin' - when the http request is sent
-//  'read-end' - when the result has been received and put into model
+//  'read-end', result, error - when the result has been received, result is null and error is a message, in case of error
 // returns an object havin the on(listener) method
-var HttpConnector = function(modelSetter) {
+export function HttpConnector() {
   var listeners = [];
 
   function open(resourceUrl) {
     fireEvent('read-begin');
     $.get(resourceUrl).done(function(data) {
-      modelSetter(data);
-      fireEvent('read-end');
+      fireEvent('read-end', data);
+    }).error(function(error) {
+      console.log('error', error);
+      fireEvent('read-end', null, error);
     });
   }
 
-  function fireEvent(type) {
+  function fireEvent(type, data, error) {
     _.each(listeners, function(listener) {
-      listener(type);
+      listener(type, data, error);
     });
   }
 
@@ -30,5 +32,3 @@ var HttpConnector = function(modelSetter) {
     open: open
   };
 };
-
-module.exports = HttpConnector;

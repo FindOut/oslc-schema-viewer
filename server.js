@@ -13,6 +13,7 @@ var app = express();
 app.use(webpackDevMiddleware(webpack(config), {}));
 
 app.get('/proxy', function (request, response) {
+  console.log('get /proxy');
   response.header('Access-Control-Allow-Origin', '*');
   response.header('Cache-Control', 'no-cache, no-store, must-revalidate');
   response.header('Pragma', 'no-cache');

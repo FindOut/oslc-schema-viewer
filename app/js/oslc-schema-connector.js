@@ -1,12 +1,12 @@
-var d3 = require('d3');
-var _ = require('lodash');
-var Promise = require('promise');
-var RdfXmlParser = require('rdf-parser-rdfxml');
+import * as d3 from './modeling/d3';
+import _ from 'lodash';
+import Promise from 'promise';
+import RdfXmlParser from 'rdf-parser-rdfxml';
 import {fetchGraph, matchForEachTriple, getOneObject, getOneObjectString, addTriple, renderHtmlPropsTable, getPropsProps, graphToString} from './oslc-schema-utils';
-import {vboxLayout, RelationRenderer} from './modeling/index';
+import {VBoxLayout, RelationComponent} from './modeling/index.js';
 
-import DomainRenderer from './domain-renderer';
-import ResourceTypeRenderer from './resource-type-renderer';
+import DomainComponent from './domain-component';
+import ResourceTypeComponent from './resource-type-component';
 
 let OSLC = suffix => 'http://open-services.net/ns/core#' + suffix;
 let RDF = suffix => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#' + suffix;
@@ -19,14 +19,14 @@ let schemaDomainType = parser.rdf.createNamedNode(OSLCKTH('hasResourceShape'));
 
 let currentGraph;
 
-export var domainRenderer = new DomainRenderer('domain', domainNameInfoGetter).layout(vboxLayout().margin(10));
-export var resourceTypeRenderer = new ResourceTypeRenderer('resourceType', propsPropsGetter, parser.rdf.prefixes, isDerived);
-var relationRenderer = new RelationRenderer('relation', d => d.text);
+export var domainComponent = new DomainComponent('domain', domainNameInfoGetter).layout(new VBoxLayout().margin(10));
+export var resourceTypeComponent = new ResourceTypeComponent('resourceType', propsPropsGetter, parser.rdf.prefixes, isDerived);
+var relationComponent = new RelationComponent('relation', d => [d.text]);
 
-export function getOSLCSchemaRenderer(d) {
+export function getOSLCSchemaComponent(d) {
   return {
-    'http://oslc.kth.se/core#SchemaDomain': domainRenderer.render,
-    'http://oslc.kth.se/core#SchemaResourceType': resourceTypeRenderer.render}[getRdfType(d)];
+    'http://oslc.kth.se/core#SchemaDomain': domainComponent,
+    'http://oslc.kth.se/core#SchemaResourceType': resourceTypeComponent}[getRdfType(d)];
 }
 
 // returns a list of children of parentData
@@ -61,7 +61,10 @@ export function getRelations(parentData) {
         let range = getOneObject(currentGraph, propertyUriTriple.object, OSLC('range'));
         if (range) {
           let name = getOneObjectString(currentGraph, propertyUriTriple.object, OSLC('propertyDefinition'));
-          rels.push({type: 'relation', text: parser.rdf.prefixes.shrink(name).replace(prefixRegExp, ''), from: resourceShapeUriTriple.subject.toString(), to: range.toString()});
+          let text = parser.rdf.prefixes.shrink(name).replace(prefixRegExp, '');
+          let id = resourceShapeUriTriple.subject.toString() + '-' + range.toString() + '-' + text;
+          let relationItem = {id: id, type: 'relation', text: text, from: resourceShapeUriTriple.subject.toString(), to: range.toString()};
+          rels.push(relationItem);
         }
       });
     });
@@ -69,8 +72,8 @@ export function getRelations(parentData) {
   }
 }
 
-export function getRelationRenderer(d) {
-    return {'relation': relationRenderer.render}[d.type];
+export function getRelationComponent(d) {
+    return {'relation': relationComponent}[d.type];
   }
 
 export function renderHtml() {
@@ -137,11 +140,11 @@ function getUniqeDomainNames() {
 
 // returns an object having the methods:
 // on(listener) - stores listener
-// open(url) - reads resourceUrl and sets model using modelSetter
+// open(url) - reads resourceUrl and
 //    informs listeners about events by calling with parameter:
 //    'read-begin' - when the http request is sent
-//    'read-end' - when the result has been received and put into model
-export function OSLCSchemaConnector(modelSetter) {
+//    'read-end', result - when the result has been received
+export function OSLCSchemaConnector() {
   var listeners = [];
 
   function open(catalogUrls) {
@@ -195,8 +198,7 @@ export function OSLCSchemaConnector(modelSetter) {
         createMissingResourceTypes(graph, resourceShapeUriSet);
 
         currentGraph = graph;
-        modelSetter(graph);
-        fireEvent('read-end');
+        fireEvent('read-end', graph);
       })
       .catch(function(error) {
         console.error(error);
@@ -229,7 +231,7 @@ export function OSLCSchemaConnector(modelSetter) {
       let prefixBase = getOneObjectString(graph, triple.subject, OSLC('prefixBase'));
       parser.rdf.prefixes[prefix] = prefixBase;
     });
-    _.forEach(parser.rdf.prefixes, (v, k) => console.log(k, v));
+    // _.forEach(parser.rdf.prefixes, (v, k) => console.log(k, v));
   }
 
   // for any property oslc:range to nonexistent domain or resource type, create dummy resource type
@@ -267,9 +269,9 @@ export function OSLCSchemaConnector(modelSetter) {
     }
   }
 
-  function fireEvent(type) {
+  function fireEvent(type, data) {
     _.each(listeners, function(listener) {
-      listener(type);
+      listener(type, data);
     });
   }
 

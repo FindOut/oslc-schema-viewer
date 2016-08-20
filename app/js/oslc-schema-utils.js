@@ -1,6 +1,7 @@
-var _ = require('lodash');
-var Promise = require('promise');
-var RdfXmlParser = require('rdf-parser-rdfxml');
+import * as d3 from './modeling/d3';
+import _ from 'lodash';
+import Promise from 'promise';
+import RdfXmlParser from 'rdf-parser-rdfxml';
 
 let OSLC = suffix => 'http://open-services.net/ns/core#' + suffix;
 let RDF = suffix => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#' + suffix;
@@ -117,7 +118,7 @@ export function fetchGraph(url, tripleMap) {
 
 export function fetchXml(url) {
   return new Promise(function(fulfill, reject) {
-    d3.xhr('http://localhost:3011/proxy?url=' + encodeURIComponent(url))
+    d3.request('http://localhost:3011/proxy?url=' + encodeURIComponent(url))
     .header('Accept', 'application/rdf+xml')
     .get(function(error, xhr) {
       if (error) {
